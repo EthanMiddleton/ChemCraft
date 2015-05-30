@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ChemCraft
 {
-    interface Card
+    public abstract class Card
     {
         // Image to display
         Texture2D texture;
@@ -30,18 +30,23 @@ namespace ChemCraft
         // Atomic number
         int id;
 
-        
+
         // Properties
-        // Cost
-        int Cost { get; set; }
-        
         // State
-        int State { get; set; }
+        int State
+        {
+            get{ return state; }
+            set{ state = value; }
+        }
         // x location
-        new int X;
+        int X {
+            get { return x; }
+            set { x = value; }
+        }
         // Y location
-        int Y { get; set; }
-        // Atomic Number
-        int ID { get; set; }
+        int Y {
+            get { return y; }
+            set { y = value; }
+        }
     }
 }
