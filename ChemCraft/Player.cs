@@ -19,12 +19,16 @@ namespace ChemCraft
         Crucible crucible;
         //how much energy the player has
         int energy;
+        //shield array list
+        ArrayList shield;
+
         //player constructor
         public Player()
         {
             deck = new List<Element>();
             hand = new ArrayList();
             compounds = new List<Compound>();
+            shield = new ArrayList();
             energy = 0;
         }
         //draw cards until the plaer hand has 6 cards
@@ -67,22 +71,14 @@ namespace ChemCraft
         {
             //cruicble.(Method)(hand, compounds);
         }
-        //simple attack and defense methods (needs to be improved)
-        #region Attack/Defend
-        private void Attack(int n)
-        {
-            Compound tempC = new Compound();
-            tempC = compounds[n];
-            compounds.RemoveAt(n);
-        }
 
-        private void Defend(int n)
+        //removes a compound (needs to be improved so that you send the compound sent)
+        private void removeCompound(int n)
         {
             Compound tempC = new Compound();
             tempC = compounds[n];
             compounds.RemoveAt(n);
         }
-        #endregion
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
         ArrayList Hand
