@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    abstract partial class Element
+    abstract partial class Element : Card
     {
         //transmute the element up or down a level on the periodic table
         abstract Element transmute;
@@ -22,4 +22,3 @@ namespace ChemCraft
 
     }
 }
-
