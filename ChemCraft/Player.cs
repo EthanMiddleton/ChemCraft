@@ -82,22 +82,28 @@ namespace ChemCraft
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
-        ArrayList Hand
+        public ArrayList Hand
         {
             get { return hand; }
             set { hand = value; }
         }
 
-        List<Compound> Compounds
+        public List<Compound> Compounds
         {
             get { return compounds; }
             set { compounds = value; }
         }
 
-        Crucible Crucible
+        public Crucible Crucible
         {
            get { return crucible; }
            set { crucible = value; }
+        }
+        
+        public int health
+        {
+            get { return health; }
+            set { health = value; }
         }
 
         #endregion
