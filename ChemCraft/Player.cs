@@ -10,26 +10,26 @@ namespace ChemCraft
     {
         //variables the player may need
         //hand is the elements currently in the player's hand
-        ArrayList hand;
+        private List<Element> hand;
         //compounds is the list of compounds the player owns
-        List<Compound> compounds;
+        private List<Compound> compounds;
         //the player's deck
-        List<Element> deck;
+        private List<Element> deck;
         //the crucible where elements will combine
-        Crucible crucible;
-        //how much energy and energy the player has
-        int energy, health;
+        private Crucible crucible;
+        //how much energy the player has
+        private int energy;
+        private int health;
         //shield array list
-        ArrayList shield;
-
+        private List<Compound> shield;
 
         //player constructor
         public Player()
         {
             deck = new List<Element>();
-            hand = new ArrayList();
+            hand = new List<Element>();
             compounds = new List<Compound>();
-            shield = new ArrayList();
+            shield = new List<Compound>();
             energy = 0;
             health = 10;
         }
@@ -65,7 +65,7 @@ namespace ChemCraft
         {
             for (int i = 0; i < compounds.Count; i++)
             {
-               energy += compounds[i].value;
+                energy += compounds[i].value;
             }
         }
 
@@ -83,7 +83,7 @@ namespace ChemCraft
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
-        public ArrayList Hand
+        public List<Element> Hand
         {
             get { return hand; }
             set { hand = value; }
@@ -97,8 +97,8 @@ namespace ChemCraft
 
         public Crucible Crucible
         {
-           get { return crucible; }
-           set { crucible = value; }
+            get { return crucible; }
+            set { crucible = value; }
         }
 
         public int Health
@@ -107,10 +107,16 @@ namespace ChemCraft
             set { health = value; }
         }
 
-        public ArrayList Shield
+        public List<Compound> defense
         {
             get { return shield; }
             set { shield = value; }
+        }
+
+        public int Energy
+        {
+            get { return energy; }
+            set { energy = value; }
         }
         #endregion
     }

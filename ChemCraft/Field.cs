@@ -20,7 +20,7 @@ namespace ChemCraft
         // Turn taking variables
         enum TurnPos { attackActive, other };
         TurnPos turnPos;
-        int active;
+        int active, i;
 
         // Variables for changing selected card
         MouseState mouse;
@@ -40,6 +40,7 @@ namespace ChemCraft
         public Field()
         {
             player = new Player[2] { new Player(), new Player() };
+            i = 0;
         }
 
         /// <summary>
@@ -73,26 +74,27 @@ namespace ChemCraft
         /// </summary>
         public void cycle()
         {
-
+            turn();
         }
 
         /// <summary>
         /// Run a player's turn
         /// </summary>
         /// <param name="active">The active player</param>
-        public void turn(int i)
+        public void turn()
         {
             if (turnPos == TurnPos.other)
             {
-                active = i;
+                active = i % 2;
                 player[active].income(active);
             }
-            selectCard(active);
+            selectCard<Element>(player[active].Compounds, active);
             if (turnPos == TurnPos.other)
             {
                 attack(active);
                 player[active].useCrucible();
                 player[active].DrawCards();
+                i++;
             }
         }
 
@@ -102,50 +104,81 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         private void attack(int active)
         {
-            for (int i = 0; i < otherPlayer.Shield.Count; i++)
+            // Test if the opponent has a shield for the current attack
+            for (int i = 0; i < otherPlayer.defense.Count; i++)
             {
-                if (otherPlayer.Compounds[i].type == compType.Acid && player[active].Hand[selected].Type == compType.Base)
+                if (otherPlayer.Compounds[i].type == compType.Acid && player[active].Compounds[selected].Type == compType.Base)
+                {
+                    player[active].removeCompound(selected);
+                    return;
+                }
+                if (otherPlayer.Compounds[i].type == compType.Base && player[active].Compounds[selected].Type == compType.Acid)
                 {
                     player[active].removeCompound(selected);
                     return;
                 }
             }
-            otherPlayer.Health -= player[active].H.damage;
+            player[active].removeCompound(selected);
+            otherPlayer.Health -= player[active].Compounds[selected].damage;
+        }
+
+
+        /// <summary>
+        /// Play a defense
+        /// </summary>
+        /// <param name="active">The active player</param>
+        private void defend()
+        {
+            player[active].Compounds.Add(player[active].Compounds[selected]);
+            player[active].removeCompound(selected);
         }
 
         /// <summary>
-        /// Selects the card to attack
+        /// Select the card to attack
         /// </summary>
-        private void selectCard(int active)
+        /// <typeparam name="Element"></typeparam>
+        /// <param name="active">The active player's compounds</param>
+        /// <param name="cPlayer">The array position fo the current player (not directly used, parameter only)</param>
+        private void selectCard<Element>(List<Compound> activeHand, int cPlayer)
         {
             turnPos = TurnPos.attackActive;
             mouse = Mouse.GetState();
-            for (int i = 0; i < player[active].Hand.Count; i++)
+            if (mouse.MiddleButton == ButtonState.Pressed)
             {
-                if ((player[active].Hand[i].X < (int)mouse.X < player[active].Hand[i].X + 20) && (player[active].Hand[i].Y < (int)mouse.Y < player[active].hand[i].Y + 20))
-                {
-
-                    if (MOUSE PRESSED)
-                    {
-                attack(active);
                 turnPos = TurnPos.other;
+                return;
+            }
+            for (int i = 0; i < activeHand.Count; i++)
+            {
+                if ((activeHand[i].X < (int)mouse.X < activeHand[i].X + 20) && (activeHand[i].Y < (int)mouse.Y < activeHand[i].Y + 20))
+                {
+                    if (mouse.LeftButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
+                    {
+                        attack(cPlayer);
+                        turnPos = TurnPos.other;
+                    }
+                    if (mouse.RightButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
+                    {
+                        defend();
+                        turnPos = TurnPos.other;
+                    }
+                }
             }
         }
 
-        /// <summary>
-        /// Easy access to the inactive player
-        /// </summary>
-        Player otherPlayer
-        {
-            get
+            /// <summary>
+            /// Easy access to the inactive player
+            /// </summary>
+            Player otherPlayer{ 
+                get
             {
-                if (active == 1)
-                {
-                    return player[0];
+                    if (active == 1)
+                    {
+                        return player[0];
+                    }
+                    return player[1];
                 }
-                return player[1];
             }
-        }
 
         /// <summary>
         /// Draw something

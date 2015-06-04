@@ -38,6 +38,8 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Compound Abstract.cs" />
+    <Compile Include="Element.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Interface1.cs" />
