@@ -105,6 +105,12 @@ namespace ChemCraft
             get { return health; }
             set { health = value; }
         }
+        
+        public ArrayList defense
+        {
+            get { return shield; }
+            set { shield = value; }
+        }
 
         #endregion
     }
