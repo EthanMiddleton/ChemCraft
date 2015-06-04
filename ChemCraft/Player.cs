@@ -112,6 +112,12 @@ namespace ChemCraft
             get { return shield; }
             set { shield = value; }
         }
+    
+        public List<Compound> getEnergy
+        {
+            get { return energy; }
+            set { energy = value; }
+        }
 
         #endregion
     }
