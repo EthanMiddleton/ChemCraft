@@ -10,17 +10,17 @@ namespace ChemCraft
     {
         //variables the player may need
         //hand is the elements currently in the player's hand
-        ArrayList hand;
+        private ArrayList hand;
         //compounds is the list of compounds the player owns
-        List<Compound> compounds;
+        private List<Compound> compounds;
         //the player's deck
-        List<Element> deck;
+        private List<Element> deck;
         //the crucible where elements will combine
-        Crucible crucible;
+        private Crucible crucible;
         //how much energy the player has
-        int energy;
+        private int energy, health;
         //shield array list
-        ArrayList shield;
+        private ArrayList shield;
 
         //player constructor
         public Player()
@@ -30,9 +30,10 @@ namespace ChemCraft
             compounds = new List<Compound>();
             shield = new ArrayList();
             energy = 0;
+            health = 10;
         }
         //draw cards until the plaer hand has 6 cards
-        private void DrawCards()
+        public void DrawCards()
         {
             while (hand.Count < 6)
                 hand.Add(Draw());
@@ -59,7 +60,7 @@ namespace ChemCraft
         }
 
         //method to determine amount of income
-        private void income(int active) // how energy is gained from the compounds made
+        public void income(int active) // how energy is gained from the compounds made
         {
             for (int i = 0; i < compounds.Count; i++)
             {
@@ -67,13 +68,13 @@ namespace ChemCraft
             }
         }
 
-        private void useCrucible()
+        public void useCrucible()
         {
             //cruicble.(Method)(hand, compounds);
         }
 
         //removes a compound (needs to be improved so that you send the compound sent)
-        private void removeCompound(int n)
+        public void removeCompound(int n)
         {
             Compound tempC = new Compound();
             tempC = compounds[n];
