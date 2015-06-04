@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class Player
+    public class Player
     {
         //variables the player may need
         //hand is the elements currently in the player's hand
