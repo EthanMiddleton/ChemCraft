@@ -10,7 +10,7 @@ namespace ChemCraft
     {
         //variables the player may need
         //hand is the elements currently in the player's hand
-        private ArrayList hand;
+        private List<Element> hand;
         //compounds is the list of compounds the player owns
         private List<Compound> compounds;
         //the player's deck
@@ -26,7 +26,7 @@ namespace ChemCraft
         public Player()
         {
             deck = new List<Element>();
-            hand = new ArrayList();
+            hand = new List<Element>();
             compounds = new List<Compound>();
             shield = new ArrayList();
             energy = 0;
@@ -82,28 +82,22 @@ namespace ChemCraft
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
-        public ArrayList Hand
+        List<Element> Hand
         {
             get { return hand; }
             set { hand = value; }
         }
 
-        public List<Compound> Compounds
+        List<Compound> Compounds
         {
             get { return compounds; }
             set { compounds = value; }
         }
 
-        public Crucible Crucible
+        Crucible Crucible
         {
            get { return crucible; }
            set { crucible = value; }
-        }
-        
-        public int health
-        {
-            get { return health; }
-            set { health = value; }
         }
 
         #endregion
