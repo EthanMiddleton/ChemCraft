@@ -113,7 +113,7 @@ namespace ChemCraft
             set { shield = value; }
         }
     
-        public List<Compound> getEnergy
+        public int getEnergy
         {
             get { return energy; }
             set { energy = value; }
