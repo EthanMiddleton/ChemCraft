@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class Player
+    public class Player
     {
         //variables the player may need
         //hand is the elements currently in the player's hand
@@ -111,6 +111,12 @@ namespace ChemCraft
         {
             get { return shield; }
             set { shield = value; }
+        }
+    
+        public List<Compound> getEnergy
+        {
+            get { return energy; }
+            set { energy = value; }
         }
 
         #endregion
