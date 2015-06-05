@@ -19,6 +19,8 @@ namespace ChemCraft
         //amount of electrons, ionic charge of the element, and how reactive the element is
         public int electrons, reactivity, state = 0;
 
+
+
         int X
         {
             get { return x; }

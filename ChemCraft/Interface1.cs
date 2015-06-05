@@ -34,18 +34,18 @@ namespace ChemCraft
         // Properties
         #region
         // State
-        int State
+        public int State
         {
             get{ return state;  }
             set{ state = value; }
         }
         // x location
-        int X {
+        public int X {
             get { return x;  }
             set { x = value; }
         }
         // Y location
-        int Y {
+        public int Y {
             get { return y;  }
             set { y = value; }
         }

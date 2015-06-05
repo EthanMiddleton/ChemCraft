@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Chemcraft
+namespace ChemCraft
 {
-    abstract class AbstractCompounds
+    abstract class Compound : Card
     {
         
         //number of elements
@@ -22,6 +22,9 @@ namespace Chemcraft
         public string formula;
         //acid or base
         public int acidorbase;
+        public enum compType { Acid = 1, Base }
+        public compType Type;
+
 
 
         /// <summary>

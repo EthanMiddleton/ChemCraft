@@ -18,9 +18,9 @@ namespace ChemCraft
         Player[] player;
 
         // Turn taking variables
-        enum TurnPos { attackActive, other };
-        TurnPos turnPos;
-        int active, i;
+        enum TurnPos { attackActive, other, crafting };
+        static TurnPos turnPos;
+        int active, turnCount;
 
         // Variables for changing selected card
         MouseState mouse;
@@ -40,7 +40,8 @@ namespace ChemCraft
         public Field()
         {
             player = new Player[2] { new Player(), new Player() };
-            i = 0;
+            turnCount = 0;
+            turnPos = TurnPos.other;
         }
 
         /// <summary>
@@ -83,18 +84,22 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         public void turn()
         {
-            if (turnPos == TurnPos.other)
+            if (turnPos != TurnPos.crafting)
             {
-                active = i % 2;
-                player[active].income(active);
-            }
-            selectCard<Element>(player[active].Compounds, active);
-            if (turnPos == TurnPos.other)
-            {
-                attack(active);
-                player[active].useCrucible();
-                player[active].DrawCards();
-                i++;
+                if (turnPos == TurnPos.other)
+                {
+                    active = turnCount % 2;
+                    player[active].income(active);
+                }
+                selectCard<Element>(player[active].Compounds, active);
+                if (turnPos == TurnPos.other)
+                {
+                    attack(active);
+                    turnPos = TurnPos.crafting;
+                    player[active].useCrucible();
+                    player[active].DrawCards();
+                    turnCount++;
+                }
             }
         }
 
@@ -104,15 +109,16 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         private void attack(int active)
         {
+            player[active].Energy -= 2 * player[active].Compounds[selected].elementnum;
             // Test if the opponent has a shield for the current attack
             for (int i = 0; i < otherPlayer.defense.Count; i++)
             {
-                if (otherPlayer.Compounds[i].type == compType.Acid && player[active].Compounds[selected].Type == compType.Base)
+                if (otherPlayer.Compounds[i].Type.Equals(Compound.compType.Acid) && player[active].Compounds[selected].Type.Equals(Compound.compType.Base))
                 {
                     player[active].removeCompound(selected);
                     return;
                 }
-                if (otherPlayer.Compounds[i].type == compType.Base && player[active].Compounds[selected].Type == compType.Acid)
+                if (otherPlayer.Compounds[i].Type.Equals(Compound.compType.Base) && player[active].Compounds[selected].Type.Equals(Compound.compType.Acid))
                 {
                     player[active].removeCompound(selected);
                     return;
@@ -150,7 +156,7 @@ namespace ChemCraft
             }
             for (int i = 0; i < activeHand.Count; i++)
             {
-                if ((activeHand[i].X < (int)mouse.X < activeHand[i].X + 20) && (activeHand[i].Y < (int)mouse.Y < activeHand[i].Y + 20))
+                if ((activeHand[i].X < (int)mouse.X && (int)mouse.X < activeHand[i].X + 20) && (activeHand[i].Y < (int)mouse.Y && (int)mouse.Y < activeHand[i].Y + 20))
                 {
                     if (mouse.LeftButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
                     {
@@ -166,19 +172,20 @@ namespace ChemCraft
             }
         }
 
-            /// <summary>
-            /// Easy access to the inactive player
-            /// </summary>
-            Player otherPlayer{ 
-                get
+        /// <summary>
+        /// Easy access to the inactive player
+        /// </summary>
+        Player otherPlayer
+        {
+            get
             {
-                    if (active == 1)
-                    {
-                        return player[0];
-                    }
-                    return player[1];
+                if (active == 1)
+                {
+                    return player[0];
                 }
+                return player[1];
             }
+        }
 
         /// <summary>
         /// Draw something
@@ -189,6 +196,14 @@ namespace ChemCraft
         public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 position)
         {
             spriteBatch.Draw(texture, position, Color.White);
+        }
+
+        /// <summary>
+        /// Called by Crucible to continue the turn
+        /// </summary>
+        public static void craftingDone()
+        {
+            turnPos = TurnPos.crafting;
         }
     }
 }
