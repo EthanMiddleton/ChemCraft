@@ -1,0 +1,29 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class H2O : Compound
+    {
+
+        public H2O()
+        {
+            name = "Water";
+            state = 0;
+            elementnum = 3;
+            damage = 2;
+            formula = "H2O";
+            a = type.Undetermined;
+            elements = new int[3] { 1, 1, 8 };
+        }
+
+        abstract public void ability()
+        {
+
+        }
+
+    }
+}
