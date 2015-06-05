@@ -10,43 +10,45 @@ namespace ChemCraft
     public abstract class Card
     {
         // Image to display
-        Texture2D texture;
+        public Texture2D texture;
 
         // Element/compound symbol
-        string symbol;
+        public string symbol;
 
         // Description to be shown when hovered over
-        string description;
+        public string description;
 
         // State of card
-        int state;
+        public int state;
 
         // Position variables (not player controlled)
-        int x, y;
+        public int x, y;
 
         // Cost of the card
-        int cost;
+        public int cost;
 
         // Atomic number
-        int id;
+        public int id;
 
 
         // Properties
+        #region
         // State
-        int State
+        public int State
         {
-            get{ return state; }
+            get{ return state;  }
             set{ state = value; }
         }
         // x location
-        int X {
-            get { return x; }
+        public int X {
+            get { return x;  }
             set { x = value; }
         }
         // Y location
-        int Y {
-            get { return y; }
+        public int Y {
+            get { return y;  }
             set { y = value; }
         }
+        #endregion
     }
 }

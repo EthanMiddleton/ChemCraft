@@ -12,6 +12,9 @@ namespace ChemCraft
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        // Field Class where all actions are performed
+        Field field;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -27,7 +30,7 @@ namespace ChemCraft
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            field = new Field();
             base.Initialize();
         }
 
@@ -63,7 +66,7 @@ namespace ChemCraft
                 Exit();
 
             // TODO: Add your update logic here
-
+            field.cycle();
             base.Update(gameTime);
         }
 
