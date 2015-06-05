@@ -10,21 +10,21 @@ namespace Chemcraft
     {
         
         //number of elements
-        private int elementnum;
+        public int elementnum;
         // whether the attacking is true
-        private int state;
+        public int state;
         //damage numbers
-        private int damage;
+        public int damage;
         //name of compound
-        private string name;
-        //array of elements
-        private enum elements { };
+        public string name;
         //chemical formula
-        private string formula;
+        public string formula;
         //type of element
-        private enum type{};
+        public enum type{undetermined, Acid, Base};
         //arraylist of elements
-        private ArrayList elements;
+        public int[] elements;
+        // type of compound
+        public type a;
 
         /// <summary>
         /// determines if the compound attacks that turn
