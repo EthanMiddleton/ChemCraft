@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Chemcraft
 {
-     public abstract class Compounds
+     public abstract class Compound
     {
         
         //number of elements
@@ -21,7 +21,7 @@ namespace Chemcraft
         public string formula;
         //type of element
         public enum type{Undetermined, Acid, Base};
-        //arraylist of elements
+        //list of elements ATOMIC number
         public int[] elements;
         // type of compound
         public type a;
@@ -30,30 +30,46 @@ namespace Chemcraft
         /// determines if the compound attacks that turn
         /// </summary>
         /// <returns>if compund attacks returns true else false</returns>
-        abstract private int attack();
+        public int attack
+        {
+            get { return damage; }
+
+        }
 
         /// <summary>
         /// determines if the compund defends on that turn
         /// </summary>
         /// <returns>if the compund defends return true else false</returns>
-        abstract private int defend();
+        public int defend
+        {
+            get { return 0; }
+
+        }
 
         /// <summary>
         /// gets the name of compund
         /// </summary>
         /// <returns>name</returns>
-        abstract private string GetName();
+        public string GetName 
+        {
+            get { return name; }
+        
+        }
 
         /// <summary>
         /// gets chemical formula
         /// </summary>
         /// <returns>formula</returns>
-        abstract public string GetFormula();
+        public string GetFormula 
+        {
+            get { return formula; }
+        
+        }
 
         /// <summary>
         ///the compounds ability
         /// </summary>
-        abstract public void ability();
+        public void ability();
 
 
     }
