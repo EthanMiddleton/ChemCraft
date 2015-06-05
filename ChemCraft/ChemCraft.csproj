@@ -38,6 +38,19 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Deck\Beryllium.cs" />
+    <Compile Include="Deck\Boron.cs" />
+    <Compile Include="Deck\Carbon.cs" />
+    <Compile Include="Deck\Class1.cs" />
+    <Compile Include="Deck\Class2.cs" />
+    <Compile Include="Deck\Element.cs" />
+    <Compile Include="Deck\Fluorine.cs" />
+    <Compile Include="Deck\Helium.cs" />
+    <Compile Include="Deck\Hydrogen.cs" />
+    <Compile Include="Deck\Lithium.cs" />
+    <Compile Include="Deck\Nitrogen.cs" />
+    <Compile Include="Deck\Oxygen.cs" />
+    <Compile Include="Deck\Program.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Interface1.cs" />
@@ -52,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Deck\ConsoleApplication1.csproj" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
