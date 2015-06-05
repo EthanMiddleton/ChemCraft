@@ -20,7 +20,7 @@ namespace Chemcraft
         //chemical formula
         public string formula;
         //type of element
-        public enum type{undetermined, Acid, Base};
+        public enum type{Undetermined, Acid, Base};
         //arraylist of elements
         public int[] elements;
         // type of compound
