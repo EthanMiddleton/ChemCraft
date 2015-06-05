@@ -1,0 +1,214 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class NaHCO3 : Compound
+    {
+
+        public NaHCO3() {
+            name = "Baking Soda";
+            state = 0;
+            elementnum = 6;
+            damage = 2;
+            formula = " NaHCO3";
+            a = type.Undetermined;
+            elements = new int[6] {11,1,6,8,8,8};
+
+        }
+
+        abstract public void ability() { 
+        
+        }
+
+    }
+    }
+    
+    
+    
+    using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class NaClO : Compound
+    {
+       
+
+        public NaClO() {
+            name = "Bleach";
+            state = 0;
+            elementnum = 3;
+            damage = 2;
+            formula = "NaClO";
+            a = type.Base;
+            elements = new int[3] {11,17,8};
+
+        }
+
+
+        abstract public void ability() { 
+        
+        }
+
+    }
+    }
+    
+    
+    using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class N2O : Compound
+    {
+
+        public N2O() {
+            name = "Laughing Gas";
+            state = 0;
+            elementnum = 3;
+            damage = 2;
+            formula = "N2O";
+            a = type.Undetermined;
+            elements = new int[3] {7,7,8};
+        }
+
+        abstract public void ability() { 
+        
+        }
+
+    }
+    }
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class H2O : Compound
+    {
+
+        public H2O()
+        {
+            name = "Water";
+            state = 0;
+            elementnum = 3;
+            damage = 2;
+            formula = "H2O";
+            a = type.Undetermined;
+            elements = new int[3] { 1, 1, 8 };
+        }
+
+        abstract public void ability()
+        {
+
+        }
+
+    }
+}
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class CaCO3 : Compound
+    {
+         
+        public CaCO3() {
+            name = "Marble";
+            state = 0; 
+            elementnum = 5;
+            damage = 2;
+            formula = "CaCO3";
+            a = type.Undetermined;
+            elements = new int[5] {20,6,8,8,8};
+        }
+
+     
+
+        abstract public void ability() { 
+        
+        }
+
+    }
+    }
+    
+    
+    using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class C12H22O11 : Compound
+    {
+
+        public C12H22O11() {
+            name = "Table Sugar";
+            state = 0;
+            elementnum = 45;
+            damage = 2;
+            formula = "C12H22O11";
+            a = type.Undetermined;
+            elements = new int[45] {6,6,6,6,6,6,6,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,8,8,8,8,8,8,8,8,8,8,8};
+        }
+
+       
+        abstract public void ability() { 
+        
+        }
+
+    }
+    
+    
+    
+    using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Chemcraft
+{
+    class C3H8O : Compound
+    {
+
+        public C3H8O() {
+            name = "Rubbing Alcohol";
+            elementnum = 3;
+            damage = 2;
+            formula = "C3H8O";
+            a = type.Undetermined;
+            elements = new int[12] {6,6,6,1,1,1,1,1,1,1,1,8};
+            
+        }
+
+   
+
+        abstract public void ability() { 
+        
+        }
+
+    }
+    }
+    }
