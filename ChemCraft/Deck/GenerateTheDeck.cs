@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class GenerateTheDeck
+    public class GenerateTheDeck
     {
         public static void main(string[] args)
         {
