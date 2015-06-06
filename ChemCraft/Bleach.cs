@@ -9,8 +9,8 @@ namespace ChemCraft
     class NaClO : Compound
     {
        
-
-        public NaClO() {
+        public NaClO() 
+        {
             name = "Bleach";
             state = 0;
             elementnum = 3;
@@ -18,13 +18,13 @@ namespace ChemCraft
             formula = "NaClO";
             a = type.Base;
             elements = new int[3] {11,17,8};
-
         }
 
 
-        abstract public void ability() { 
-        
+        abstract public void ability() 
+        { 
+
         }
 
     }
-    }
+}
