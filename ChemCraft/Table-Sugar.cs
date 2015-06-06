@@ -9,7 +9,8 @@ namespace ChemCraft
     class C12H22O11 : Compound
     {
 
-        public C12H22O11() {
+        public C12H22O11() 
+        {
             name = "Table Sugar";
             state = 0;
             elementnum = 45;
@@ -25,3 +26,4 @@ namespace ChemCraft
         }
 
     }
+}
