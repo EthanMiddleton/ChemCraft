@@ -20,9 +20,12 @@ namespace ChemCraft
             elements = new int[5] {20,6,8,8,8};
         }
         
-        abstract public void ability() 
-        { 
-        
+        /// <summary>
+        ///the compounds ability
+        /// </summary>
+       override public void ability()
+        {
+
         }
 
     }
