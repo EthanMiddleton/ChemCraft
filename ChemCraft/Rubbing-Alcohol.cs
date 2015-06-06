@@ -16,15 +16,13 @@ namespace ChemCraft
             formula = "C3H8O";
             a = type.Undetermined;
             elements = new int[12] {6,6,6,1,1,1,1,1,1,1,1,8};
-            
         }
 
    
 
         abstract public void ability() { 
-        
-        }
 
+        }
+        
     }
-    }
-    }
+}
