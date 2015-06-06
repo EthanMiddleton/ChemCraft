@@ -21,8 +21,12 @@ namespace ChemCraft
         }
 
        
-        abstract public void ability() { 
-        
+        /// <summary>
+        ///the compounds ability
+        /// </summary>
+       override public void ability()
+        {
+
         }
 
     }
