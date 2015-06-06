@@ -9,7 +9,8 @@ namespace ChemCraft
     class N2O : Compound
     {
 
-        public N2O() {
+        public N2O() 
+        {
             name = "Laughing Gas";
             state = 0;
             elementnum = 3;
@@ -19,9 +20,10 @@ namespace ChemCraft
             elements = new int[3] {7,7,8};
         }
 
-        abstract public void ability() { 
+        abstract public void ability() 
+        { 
         
         }
 
     }
-    }
+}
