@@ -9,7 +9,8 @@ namespace ChemCraft
     class CaCO3 : Compound
     {
          
-        public CaCO3() {
+        public CaCO3() 
+        {
             name = "Marble";
             state = 0; 
             elementnum = 5;
@@ -18,12 +19,11 @@ namespace ChemCraft
             a = type.Undetermined;
             elements = new int[5] {20,6,8,8,8};
         }
-
-     
-
-        abstract public void ability() { 
+        
+        abstract public void ability() 
+        { 
         
         }
 
     }
-    }
+}
