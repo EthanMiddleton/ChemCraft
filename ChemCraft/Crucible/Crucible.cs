@@ -216,7 +216,7 @@ namespace ChemCraft
             player.getEnergy = energy;
             player.deck = deck;
 
-            player.craftingDone();
+            Field.craftingDone();
             this.Close();
         }
 
