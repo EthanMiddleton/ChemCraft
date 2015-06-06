@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Deck
+    public class Deck
     {
       //  List<Token> deck = new List<Token>();
 
