@@ -23,6 +23,6 @@ namespace ChemCraft
         abstract public void ability() { 
         
         }
-
+        
     }
-    }
+}
