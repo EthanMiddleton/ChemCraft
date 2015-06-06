@@ -23,10 +23,10 @@ namespace ChemCraft
         /// <summary>
         ///the compounds ability
         /// </summary> 
-        override
-        public void ability()
+        override public void ability()
         {
 
         }
+        
     }
 }
