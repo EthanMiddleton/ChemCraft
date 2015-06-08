@@ -174,4 +174,142 @@ namespace ChemCraft
        }
        public bool isDiatomic() { return false; }
    }
+
+   public class Sodium : Metal
+   {
+       public Sodium()
+       {
+           elementSymbol = "Na";
+           atomicNumber = 11;
+           valenceElectrons = 1;
+           valenceShell = 8;
+           state = SOLID;
+           ion = CATION;
+       }
+   }
+
+   public class Magnesium : Metal
+   {
+       public Magnesium()
+       {
+           elementSymbol = "Mg";
+           atomicNumber = 12;
+           valenceElectrons = 2;
+           valenceShell = 8;
+           state = SOLID;
+           ion = CATION;
+       }
+   }
+
+   public class Aluminum : Metal
+   {
+       public Aluminum()
+       {
+           elementSymbol = "Al";
+           atomicNumber = 13;
+           valenceElectrons = 3;
+           valenceShell = 8;
+           state = SOLID;
+           ion = CATION;
+       }
+   }
+
+   public class Silicon : Metalloid
+   {
+       public Silicon()
+       {
+           elementSymbol = "Si";
+           atomicNumber = 14;
+           valenceElectrons = 4;
+           valenceShell = 8;
+           state = SOLID;
+           ion = CATION;
+       }
+   }
+
+   public class Phosphorus : NonMetal
+   {
+       public Phosphorus()
+       {
+           elementSymbol = "P";
+           atomicNumber = 15;
+           valenceElectrons = 5;
+           valenceShell = 8;
+           state = GAS;
+           ion = ANION;
+       }
+
+       public bool isDiatomic() { return false; }
+   }
+
+   public class Sulphur : NonMetal
+   {
+       public Sulphur()
+       {
+           elementSymbol = "S";
+           atomicNumber = 16;
+           valenceElectrons = 6;
+           valenceShell = 8;
+           state = gas;
+           ion = ANION;
+       }
+
+       public bool isDiatomic() { return true; }
+   }
+
+   public class Chlorine : NonMetal
+   {
+       public Chlorine()
+       {
+           elementSymbol = "Cl";
+           atomicNumber = 17;
+           valenceElectrons =7;
+           valenceShell = 8;
+           state = GAS;
+           ion = ANION;
+       }
+
+       public bool isDiatomic() { return true; }
+   }
+
+   public class Argon : NonMetal
+   {
+       public Argon()
+       {
+           elementSymbol = "Ar";
+           atomicNumber = 18;
+           valenceElectrons = 8;
+           valenceShell = 8;
+           state = GAS;
+           ion = NOT;
+       }
+
+       public bool isDiatomic() { return true; }
+   }
+
+   public class Potassium : Metal
+   {
+       public Potassium()
+       {
+           elementSymbol = "K";
+           atomicNumber = 19;
+           valenceElectrons = 1;
+           valenceShell = 8;
+           state = solid;
+           ion = CATION;
+       }
+   }
+
+   public class Calcium : Metal
+   {
+       public Calcium()
+       {
+           elementSymbol = "Ca";
+           atomicNumber = 20;
+           valenceElectrons = 2;
+           valenceShell = 8;
+           state = SOLID;
+           ion = CATION;
+       }
+   }
 }
