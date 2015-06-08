@@ -205,5 +205,11 @@ namespace ChemCraft
         {
             turnPos = TurnPos.crafting;
         }
+
+
+        private void consoleDraw()
+        {
+
+        }
     }
 }

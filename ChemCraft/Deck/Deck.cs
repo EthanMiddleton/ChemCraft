@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace ChemCraft
 {
-    class Deck
+    public class Deck
     {
       //  List<Token> deck = new List<Token>();
 
