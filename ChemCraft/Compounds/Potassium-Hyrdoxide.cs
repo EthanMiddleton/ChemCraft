@@ -16,7 +16,7 @@ namespace ChemCraft
             damage = 4;
             name = "Potassium Hydroxide";
             formula = "KOH";
-            a = type.Base;
+            type = Type.Base;
             elements = new int[3] { 19, 8, 1 };
         }
 

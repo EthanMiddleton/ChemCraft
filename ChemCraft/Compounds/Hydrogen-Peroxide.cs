@@ -16,7 +16,7 @@ namespace ChemCraft
             damage = 4;
             name = "Hydrogen Peroxide";
             formula = "H₂O₂";
-            a = type.Acid;
+            type = Type.Acid;
             elements = new int[4] { 1, 1, 8, 8 };
         }
 

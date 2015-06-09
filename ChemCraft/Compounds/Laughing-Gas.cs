@@ -16,7 +16,7 @@ namespace ChemCraft
             elementnum = 3;
             damage = 2;
             formula = "N2O";
-            a = type.Undetermined;
+            type = Type.Undetermined;
             elements = new int[3] {7,7,8};
         }
 

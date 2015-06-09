@@ -16,7 +16,7 @@ namespace ChemCraft
             damage = 5;
             name = "Muriatic Acid";
             formula = "HCl";
-            a = type.Acid;
+            type = Type.Acid;
             elements = new int[2] { 1, 17 };
         }
 

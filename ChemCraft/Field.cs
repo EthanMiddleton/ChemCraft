@@ -113,12 +113,12 @@ namespace ChemCraft
             // Test if the opponent has a shield for the current attack
             for (int i = 0; i < otherPlayer.defense.Count; i++)
             {
-                if (otherPlayer.Compounds[i].Type.Equals(Compound.compType.Acid) && player[active].Compounds[selected].Type.Equals(Compound.compType.Base))
+                if (otherPlayer.Compounds[i].type.Equals(Compound.Type.Acid) && player[active].Compounds[selected].type.Equals(Compound.Type.Base))
                 {
                     player[active].removeCompound(selected);
                     return;
                 }
-                if (otherPlayer.Compounds[i].Type.Equals(Compound.compType.Base) && player[active].Compounds[selected].Type.Equals(Compound.compType.Acid))
+                if (otherPlayer.Compounds[i].type.Equals(Compound.Type.Base) && player[active].Compounds[selected].type.Equals(Compound.Type.Acid))
                 {
                     player[active].removeCompound(selected);
                     return;

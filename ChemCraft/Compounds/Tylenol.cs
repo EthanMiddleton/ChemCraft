@@ -16,7 +16,7 @@ namespace ChemCraft
             damage = 2;
             name = "Tylenol";
             formula = "C₈H₉NO₂";
-            a = type.Base;
+            type = Type.Base;
             elements = new int[20] { 6, 6, 6, 6, 6, 6, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 8, 8 };
         }
 
