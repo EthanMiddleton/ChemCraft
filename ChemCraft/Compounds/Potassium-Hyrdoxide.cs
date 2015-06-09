@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    public class KOH : Compounds
+    public class KOH : Compound
     {
 
         public KOH()
