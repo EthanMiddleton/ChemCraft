@@ -63,7 +63,6 @@
     <Compile Include="Elements\Element.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Interface1.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
