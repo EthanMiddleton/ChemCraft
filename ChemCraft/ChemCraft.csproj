@@ -61,7 +61,6 @@
       <DependentUpon>Crucible.cs</DependentUpon>
     </Compile>
     <Compile Include="Deck\Deck.cs" />
-    <Compile Include="Deck\GenerateTheDeck.cs" />
     <Compile Include="Elements\Element.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game1.cs" />

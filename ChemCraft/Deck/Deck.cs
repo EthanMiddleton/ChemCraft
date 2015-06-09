@@ -73,6 +73,7 @@ namespace ChemCraft
                     list.Add(fluoro);
                 }
             }
+            Shuffle();
         }
 
         public void Shuffle()
