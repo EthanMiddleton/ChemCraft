@@ -43,9 +43,9 @@ namespace ChemCraft
             get { return ValenceShell;  }
         }
 
-        public new int state
+        public int state
         {
-            protected set { State = value; }
+            set { State = value; }
             get { return State; }
         }
 
