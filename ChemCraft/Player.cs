@@ -6,33 +6,35 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class Player
+    public class Player
     {
         //variables the player may need
         //hand is the elements currently in the player's hand
-        ArrayList hand;
+        private List<Element> hand;
         //compounds is the list of compounds the player owns
-        List<Compound> compounds;
+        private List<Compound> compounds;
         //the player's deck
-        List<Element> deck;
+        private List<Element> deck;
         //the crucible where elements will combine
-        Crucible crucible;
+        private Crucible crucible;
         //how much energy the player has
-        int energy;
+        private int energy;
+        private int health;
         //shield array list
-        ArrayList shield;
+        private List <Compound> shield;
 
         //player constructor
         public Player()
         {
             deck = new List<Element>();
-            hand = new ArrayList();
+            hand = new List<Element>();
             compounds = new List<Compound>();
-            shield = new ArrayList();
+            shield = new List<Compound>();
             energy = 0;
+            health = 10;
         }
         //draw cards until the plaer hand has 6 cards
-        private void DrawCards()
+        public void DrawCards()
         {
             while (hand.Count < 6)
                 hand.Add(Draw());
@@ -59,7 +61,7 @@ namespace ChemCraft
         }
 
         //method to determine amount of income
-        private void income(int active) // how energy is gained from the compounds made
+        public void income(int active) // how energy is gained from the compounds made
         {
             for (int i = 0; i < compounds.Count; i++)
             {
@@ -67,13 +69,13 @@ namespace ChemCraft
             }
         }
 
-        private void useCrucible()
+        public void useCrucible()
         {
             //cruicble.(Method)(hand, compounds);
         }
 
         //removes a compound (needs to be improved so that you send the compound sent)
-        private void removeCompound(int n)
+        public void removeCompound(int n)
         {
             Compound tempC = new Compound();
             tempC = compounds[n];
@@ -81,22 +83,40 @@ namespace ChemCraft
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
-        ArrayList Hand
+        public List<Element> Hand
         {
             get { return hand; }
             set { hand = value; }
         }
 
-        List<Compound> Compounds
+        public List<Compound> Compounds
         {
             get { return compounds; }
             set { compounds = value; }
         }
 
-        Crucible Crucible
+        public Crucible Crucible
         {
-           get { return crucible; }
-           set { crucible = value; }
+            get { return crucible; }
+            set { crucible = value; }
+        }
+
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+
+        public List<Compound> defense
+        {
+            get { return shield; }
+            set { shield = value; }
+        }
+    
+        public int getEnergy
+        {
+            get { return energy; }
+            set { energy = value; }
         }
 
         #endregion
