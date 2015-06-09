@@ -21,13 +21,6 @@ namespace ChemCraft
         // Position variables (not player controlled)
         public int x, y;
 
-        // Cost of the card
-        public int cost;
-
-        // Atomic number
-        public int id;
-
-
         // Properties
         #region
         // x location
