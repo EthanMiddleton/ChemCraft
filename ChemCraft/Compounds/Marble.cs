@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class CaCO3 : Compound
+    public class CaCO3 : Compound
     {
          
         public CaCO3() 

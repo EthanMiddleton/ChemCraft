@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class C3H8O : Compound
+    public class C3H8O : Compound
     {
 
         public C3H8O() {

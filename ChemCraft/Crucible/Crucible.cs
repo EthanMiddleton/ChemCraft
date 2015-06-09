@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -27,7 +28,7 @@ namespace ChemCraft
 
             hand = player.Hand;
             compounds = player.Compounds;
-            energy = player.getEnergy;
+            energy = player.Energy;
             deck = player.deck;
 
             InitializeComponent();
@@ -47,11 +48,13 @@ namespace ChemCraft
             for (int i = 0; i < hand.Count; i++)
             {
                 //add the elements to the menu
-                comboBoxElements.Items.Add(hand[i].name);
+                comboBoxElements.Items.Add(hand[i].symbol);
                 //add the elements to the array
-                totalElements[hand[i].number]++;
+                totalElements[hand[i].atomicNumber]++;
             }
         }
+
+        //REEEEEEEEEEEEEEEEEEEEEEDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
         private void updateHand()
         {
             //clear variable
@@ -90,43 +93,43 @@ namespace ChemCraft
             }
             if (totalElements[8 - 1] >= 3 && totalElements[1 - 1] >= 8 && totalElements[8 - 1] >= 1)
             {
-                newCompounds.Add(new (CH3)2CHOH);
+                newCompounds.Add(new C3H8O());
             }
             if (totalElements[6 - 1] >= 12 && totalElements[1 - 1] >= 22 && totalElements[8 - 1] >= 11)
             {
-                newCompounds.Add(new C12H22O11);
+                newCompounds.Add(new C12H22O11());
             }
             if (totalElements[14 - 1] >= 1 && totalElements[8 - 1] >= 2)
             {
-                newCompounds.Add(new SiO2);
+                newCompounds.Add(new SiO2());
             }
             if (totalElements[1 - 1] >= 1 && totalElements[17 - 1] >= 1)
             {
-                newCompounds.Add(new HCl);
+                newCompounds.Add(new HCl());
             }
             if (totalElements[11 - 1] >= 1 && totalElements[17 - 1] >= 1)
             {
-                newCompounds.Add(new NaCl);
+                newCompounds.Add(new NaCl());
             }
             if (totalElements[11 - 1] >= 1 && totalElements[8 - 1] >= 1 && totalElements[1 - 1] >= 1)
             {
-                newCompounds.Add(new NaOH);
+                newCompounds.Add(new NaOH());
             }
             if (totalElements[6 - 1] >= 8 && totalElements[1 - 1] >= 9 && totalElements[7 - 1] >= 1 && totalElements[8 - 1] >= 2)
             {
-                newCompounds.Add(new C8H9NO2);
+                newCompounds.Add(new C8H9NO2());
             }
             if (totalElements[1 - 1] >= 2 && totalElements[8 - 1] >= 1)
             {
-                newCompounds.Add(new H2O);
+                newCompounds.Add(new H2O());
             }
             if (totalElements[1 - 1] >= 2 && totalElements[8 - 1] >= 2)
             {
-                newCompounds.Add(new H2O2);
+                newCompounds.Add(new H2O2());
             }
             if (totalElements[19 - 1] >= 1 && totalElements[8 - 1] >= 1 && totalElements[1 - 1] >= 1)
             {
-                newCompounds.Add(new KOH);
+                newCompounds.Add(new KOH());
             }
         }
 
@@ -161,6 +164,7 @@ namespace ChemCraft
             updateNewComp();
         }
 
+        //REDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
         //destroy
         private void button2_Click(object sender, EventArgs e)
         {
@@ -186,6 +190,7 @@ namespace ChemCraft
             }
         }
 
+        //unfinished
         public int findInDeck(Element atom)
         {
             for (int i = 0; i < deck.Count; i++)
@@ -213,7 +218,7 @@ namespace ChemCraft
 
             player.Hand = hand;
             player.Compounds = compounds;
-            player.getEnergy = energy;
+            player.Energy = energy;
             player.deck = deck;
 
             Field.craftingDone();
@@ -284,9 +289,9 @@ namespace ChemCraft
             {
                 return new CaCO3();
             }
-            else if (name == "(CH3)2CHOH")
+            else if (name == "C3H8O")
             {
-                return new CH32CHOH();
+                return new C3H8O();
             }
             else if (name == "C12H22O11")
             {

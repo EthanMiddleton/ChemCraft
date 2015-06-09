@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class H2O : Compound
+    public class H2O : Compound
     {
 
         public H2O()
