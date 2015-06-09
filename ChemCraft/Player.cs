@@ -82,6 +82,11 @@ namespace ChemCraft
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
+        public List<Element> Deck
+        {
+            get { return Deck; }
+            set { Deck = value; }
+        }
         public List<Element> Hand
         {
             get { return hand; }

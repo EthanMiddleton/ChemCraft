@@ -12,14 +12,14 @@ namespace ChemCraft
 {
     public partial class Crucible : Form
     {
+        private List<Element>[] elements;
         private Player player;
         private List<Element> hand;
         private List<Compound> compounds;
         private List<Compound> newCompounds;
         private List<Element> deck;//unimplemented
 
-        int[] totalElements = new int[118];
-        int energy;
+        private int energy;
 
         public Crucible(Player myPlayer)
         {
@@ -29,7 +29,12 @@ namespace ChemCraft
             hand = player.Hand;
             compounds = player.Compounds;
             energy = player.Energy;
-            deck = player.deck;
+            deck = player.Deck;
+
+            for(int i = 0; i < 118; i++)
+            {
+                elements[i] = new List<Element>();
+            }
 
             InitializeComponent();
 
@@ -43,14 +48,13 @@ namespace ChemCraft
         {
             //clear variables
             comboBoxElements.Items.Clear();
-            totalElements = new int[118];
 
             for (int i = 0; i < hand.Count; i++)
             {
                 //add the elements to the menu
                 comboBoxElements.Items.Add(hand[i].symbol);
                 //add the elements to the array
-                totalElements[hand[i].atomicNumber]++;
+                elements[hand[i].atomicNumber].Add(hand[i]);
             }
         }
 
@@ -155,7 +159,7 @@ namespace ChemCraft
             {
 
                 //remove the elements from the array
-                totalElements[tmpFormula[i]]--;
+                elements[tmpFormula[i]].RemoveAt(0);
             }
 
             //update
@@ -189,7 +193,7 @@ namespace ChemCraft
                 updateNewComp();
             }
         }
-
+        /*
         //unfinished
         public int findInDeck(Element atom)
         {
@@ -199,7 +203,7 @@ namespace ChemCraft
             }
             return 0;
         }
-
+        */
         //update formula text
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -219,7 +223,7 @@ namespace ChemCraft
             player.Hand = hand;
             player.Compounds = compounds;
             player.Energy = energy;
-            player.deck = deck;
+            player.Deck = deck;
 
             Field.craftingDone();
             this.Close();
