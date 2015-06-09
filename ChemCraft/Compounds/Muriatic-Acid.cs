@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    public class HCl : Compounds
+    public class HCl : Compound
     {
 
         public HCl()
