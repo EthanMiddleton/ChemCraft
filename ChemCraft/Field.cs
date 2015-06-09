@@ -111,7 +111,7 @@ namespace ChemCraft
         {
             player[active].Energy -= 2 * player[active].Compounds[selected].elementnum;
             // Test if the opponent has a shield for the current attack
-            for (int i = 0; i < otherPlayer.defense().Count; i++)
+            for (int i = 0; i < otherPlayer.defenses().Count; i++)
             {
                 if (otherPlayer.Compounds[i].type.Equals(Compound.Type.Acid) && player[active].Compounds[selected].type.Equals(Compound.Type.Base))
                 {
