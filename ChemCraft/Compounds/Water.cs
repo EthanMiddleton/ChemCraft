@@ -15,7 +15,7 @@ namespace ChemCraft
             state = 0;
             elementnum = 3;
             damage = 2;
-            formula = "H2O";
+            formula = "H₂O";
             type = Type.Undetermined;
             elements = new int[3] { 1, 1, 8 };
         }
