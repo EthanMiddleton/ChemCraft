@@ -13,7 +13,7 @@ namespace ChemCraft
             name = "Rubbing Alcohol";
             elementnum = 3;
             damage = 2;
-            formula = "C3H8O";
+            formula = "C₃H₈O";
             type = Type.Undetermined;
             elements = new int[12] {6,6,6,1,1,1,1,1,1,1,1,8};
         }

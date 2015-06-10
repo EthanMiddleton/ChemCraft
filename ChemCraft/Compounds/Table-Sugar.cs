@@ -15,7 +15,7 @@ namespace ChemCraft
             state = 0;
             elementnum = 45;
             damage = 2;
-            formula = "C12H22O11";
+            formula = "C₁₂H₂₂O₁₁";
             type = Type.Undetermined;
             elements = new int[45] {6,6,6,6,6,6,6,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,8,8,8,8,8,8,8,8,8,8,8};
         }

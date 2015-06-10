@@ -15,6 +15,7 @@ namespace ChemCraft
         private List<Element>[] elements;
         private Player player;
         private List<Element> hand;
+        private List<Element> deck;
         private List<Compound> compounds;
         private List<Compound> newCompounds;
 
@@ -26,6 +27,7 @@ namespace ChemCraft
             player = myPlayer;
 
             hand = player.Hand;
+            deck = player.Deck;
             compounds = player.Compounds;
             energy = player.Energy;
 
@@ -55,24 +57,31 @@ namespace ChemCraft
                 elements[hand[i].atomicNumber].Add(hand[i]);
             }
         }
-
+        /*
         private void updateHand()
         {
-            //clear variable
-            hand.Clear();
-
-            //for each kind of element
-            for(int i = 0; i < 118; i++)
+            //clear the hand
+            for (int i = 0; i < hand.Count; i++)
             {
-                //for each amount that kind of element
-                for(int j = 0; j > elements[i].Count; j++)
-                {
-                    //add the element the the hand
-                   hand.Add(elements[i][j]);
-                }
+                deck[hand[0].ID].state = 1;
+                hand.RemoveAt(0);
             }
-        }
 
+            int index = 0;
+                //for each kind of element
+                for (int i = 0; i < 118; i++)
+                {
+                    //for each amount that kind of element
+                    for (int j = 0; j > elements[i].Count; j++)
+                    {
+                        //add the element the the hand
+                        hand.Add(elements[i][j]);
+                        deck[hand[index].ID].state = 2;
+                        index++;
+                    }
+                }
+        }
+        */
        
         private void updateNewComp()
         {
@@ -155,12 +164,13 @@ namespace ChemCraft
             for(int i = 0; i < tmpFormula.Length; i++)
             {
 
-                //remove the elements from the array
+                //remove the elements
+                deck[elements[tmpFormula[i]][0].ID].state = 4;
+                hand.Remove(elements[tmpFormula[i]][0]);
                 elements[tmpFormula[i]].RemoveAt(0);
             }
 
             //update
-            updateHand();
             updateExistComp();
             updateNewComp();
         }
@@ -179,6 +189,7 @@ namespace ChemCraft
                 {
                     //add the element to the hand
                     hand.Add(tempEle[tmpComp[i]][0]);
+                    deck[hand[hand.Count].ID].state = 2;
                     tempEle[tmpComp[i]].RemoveAt(0);
                     //take away energy
                     energy--;
@@ -223,15 +234,10 @@ namespace ChemCraft
             player.Hand = hand;
             player.Compounds = compounds;
             player.Energy = energy;
-            player.Deck = updateDeck();
+            player.Deck = deck;
 
             Field.craftingDone();
             this.Close();
-        }
-
-        private List<Element> updateDeck()
-        {
-            return null;
         }
 
         /*public Element createElement(int number)
@@ -282,7 +288,7 @@ namespace ChemCraft
         //needs to be updated
         public Compound createCompound(String name)
         {
-            if (name == "NaHCO3")
+            if (name == "NaHCO₃")
             {
                 return new NaHCO3();
             }
@@ -290,23 +296,23 @@ namespace ChemCraft
             {
                 return new NaClO();
             }
-            else if (name == "N2O")
+            else if (name == "N₂O")
             {
                 return new N2O();
             }
-            else if (name == "CaCO3")
+            else if (name == "CaCO₃")
             {
                 return new CaCO3();
             }
-            else if (name == "C3H8O")
+            else if (name == "C₃H₈O")
             {
                 return new C3H8O();
             }
-            else if (name == "C12H22O11")
+            else if (name == "C₁₂H₂₂O₁₁")
             {
                 return new C12H22O11();
             }
-            else if (name == "SiO2")
+            else if (name == "SiO₂")
             {
                 return new SiO2();
             }
@@ -322,15 +328,15 @@ namespace ChemCraft
             {
                 return new NaOH();
             }
-            else if (name == "C8H9NO2")
+            else if (name == "C₈H₉NO₂")
             {
                 return new C8H9NO2();
             }
-            else if (name == "H2O")
+            else if (name == "H₂O")
             {
                 return new H2O();
             }
-            else if (name == "H2O2")
+            else if (name == "H₂O₂")
             {
                 return new H2O2();
             }

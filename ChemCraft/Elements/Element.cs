@@ -1,28 +1,41 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
 
-namespace ChemCraft
-{
-   public abstract class Element : Card
+    namespace ChemCraft
     {
-     public enum elementStates {SOLID, LIQUID, GAS, AQUEOUS};
-     public enum ionType {ANION, CATION, NOT};
+    public abstract class Element : Card
+    {
+        public enum elementStates {SOLID, LIQUID, GAS, AQUEOUS};
+        public enum ionType {ANION, CATION, NOT};
 
         /* public abstract Element transmute();
         public abstract void attack();
         public abstract void defense(); */
 
-        String ElementSymbol;
+        String ElementSymbol, ElementName;
         int AtomicNumber, ValenceElectrons, ValenceShell, State;
         ionType Ion;
+        int id;
 
         #region Properties
+        public int ID
+        {
+            set { id = value; }
+            get { return id; }
+        }
+
         public String elementSymbol
         {
             protected set { ElementSymbol = value; }
             get { return ElementSymbol;  }
+        }
+
+        public String elementName
+        {
+            protected set { ElementName = value; }
+            get { return ElementName;   }
         }
 
         public int atomicNumber
@@ -58,60 +71,63 @@ namespace ChemCraft
     }
 
     public abstract class Metal : Element
-   {
-       public abstract void reactWithNonMetal();
-   }
+    {
+        public abstract void reactWithNonMetal();
+    }
 
     public abstract class NonMetal : Element
-   {
-       public abstract bool isDiatomic();
-   }
+    {
+        public abstract bool isDiatomic();
+    }
 
-   public abstract class Metalloid : Element
-   {
-   }
+    public abstract class Metalloid : Element
+    {
+    }
 
-   public class Hydrogen : NonMetal
-   {
-       public Hydrogen()
-       {
-           elementSymbol = "H";
-           atomicNumber = 1;
-           valenceElectrons = 1;
-           valenceShell = 2;
-           state = 1;
-           ion = ionType.CATION;
-       }
+    public class Hydrogen : NonMetal
+    {
+        public Hydrogen()
+        {
+            elementSymbol = "H";
+            elementName = "Hydrogen";
+            atomicNumber = 1;
+            valenceElectrons = 1;
+            valenceShell = 2;
+            state = 1;
+            ion = ionType.CATION;
+        }
 
-       public override bool isDiatomic() { return true; }
-   }
+        public override bool isDiatomic() { return true; }
+    }
 
-   public class Helium : NonMetal
-   {
-       public Helium()
-       {
-           elementSymbol = "He";
-           atomicNumber = 2;
-           valenceElectrons = 2;
-           valenceShell = 2;
-           state = 1;
-           ion = ionType.NOT;
-       }
+    public class Helium : NonMetal
+    {
+        public Helium()
+        {
+            elementSymbol = "He";
+            elementName = "Helium";
+            atomicNumber = 2;
+            valenceElectrons = 2;
+            valenceShell = 2;
+            state = 1;
+            ion = ionType.NOT;
+        }
 
-       public override bool isDiatomic() { return false; }
-   }
+        public override bool isDiatomic() { return false; }
+    }
 
-   public class Lithium : Metal
-   {
-       public Lithium()
-       {
-           elementSymbol = "Li";
-           atomicNumber = 3;
-           valenceElectrons = 1;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.CATION;
-       }
+    public class Lithium : Metal
+    {
+        public Lithium()
+        {
+            elementSymbol = "Li";
+            elementName = "Lithium";
+            atomicNumber = 3;
+            valenceElectrons = 1;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.CATION;
+        }
 
         public override void reactWithNonMetal()
         {
@@ -119,17 +135,18 @@ namespace ChemCraft
         }
     }
 
-   public class Beryllium : Metal
-   {
-       public Beryllium()
-       {
-           elementSymbol = "Be";
-           atomicNumber = 4;
-           valenceElectrons = 2;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.CATION;
-       }
+    public class Beryllium : Metal
+    {
+        public Beryllium()
+        {
+            elementSymbol = "Be";
+            elementName = "Beryllium";
+            atomicNumber = 4;
+            valenceElectrons = 2;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.CATION;
+        }
 
         public override void reactWithNonMetal()
         {
@@ -137,89 +154,95 @@ namespace ChemCraft
         }
     }
 
-   public class Boron : Metalloid
-   {
-       public Boron()
-       {
-           elementSymbol = "B";
-           atomicNumber = 5;
-           valenceElectrons = 3;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.NOT;
-       }
-   }
+    public class Boron : Metalloid
+    {
+        public Boron()
+        {
+            elementSymbol = "B";
+            elementName = "Boron";
+            atomicNumber = 5;
+            valenceElectrons = 3;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.NOT;
+        }
+    }
 
-   public class Carbon : NonMetal
-   {
-       public Carbon()
-       {
-           elementSymbol = "C";
-           atomicNumber = 6;
-           valenceElectrons = 4;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.NOT;
-       }
-       public override bool isDiatomic() { return false; }
-   }
+    public class Carbon : NonMetal
+    {
+        public Carbon()
+        {
+            elementSymbol = "C";
+            elementName = "Carbon";
+            atomicNumber = 6;
+            valenceElectrons = 4;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.NOT;
+        }
+        public override bool isDiatomic() { return false; }
+    }
 
-   public class Nitrogen : NonMetal
-   {
-       public Nitrogen()
-       {
-           elementSymbol = "N";
-           atomicNumber = 7;
-           valenceElectrons = 5;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.ANION;
-       }
+    public class Nitrogen : NonMetal
+    {
+        public Nitrogen()
+        {
+            elementSymbol = "N";
+            elementName = "Nitrogen";
+            atomicNumber = 7;
+            valenceElectrons = 5;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.ANION;
+        }
 
-       public override bool isDiatomic() { return true; }
-   }
+        public override bool isDiatomic() { return true; }
+    }
 
-   public class Oxygen : NonMetal
-   {
-       public Oxygen()
-       {
-           elementSymbol = "O";
-           atomicNumber = 8;
-           valenceElectrons = 6;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.ANION;
-       }
+    public class Oxygen : NonMetal
+    {
+        public Oxygen()
+        {
+            elementSymbol = "O";
+            elementName = "Oxygen";
+            atomicNumber = 8;
+            valenceElectrons = 6;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.ANION;
+        }
 
-       public override bool isDiatomic() { return true; }
-   }
+        public override bool isDiatomic() { return true; }
+    }
 
-   public class Fluorine : NonMetal
-   {
-       public Fluorine()
-       {
-           elementSymbol = "F";
-           atomicNumber = 9;
-           valenceElectrons = 7;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.ANION;
-       }
+    public class Fluorine : NonMetal
+    {
+        public Fluorine()
+        {
+            elementSymbol = "F";
+            elementName = "Fluorine";
+            atomicNumber = 9;
+            valenceElectrons = 7;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.ANION;
+        }
 
-       public override bool isDiatomic() { return true; }
-   }
+        public override bool isDiatomic() { return true; }
+    }
 
-   public class Neon : NonMetal
-   {
-       public Neon()
-       {
-           elementSymbol = "Ne";
-           atomicNumber = 10;
-           valenceElectrons = 8;
-           valenceShell = 8;
-           state = 1;
-           ion = ionType.NOT;
-       }
-       public override bool isDiatomic() { return false; }
-   }
-}
+    public class Neon : NonMetal
+    {
+        public Neon()
+        {
+            elementSymbol = "Ne";
+            elementName = "Neon";
+            atomicNumber = 10;
+            valenceElectrons = 8;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.NOT;
+        }
+        public override bool isDiatomic() { return false; }
+    }
+    }
