@@ -17,7 +17,6 @@ namespace ChemCraft
         private List<Element> hand;
         private List<Compound> compounds;
         private List<Compound> newCompounds;
-        private List<Element> deck;//unimplemented
 
         private int energy;
 
@@ -29,7 +28,6 @@ namespace ChemCraft
             hand = player.Hand;
             compounds = player.Compounds;
             energy = player.Energy;
-            deck = player.Deck;
 
             for(int i = 0; i < 118; i++)
             {
@@ -225,10 +223,15 @@ namespace ChemCraft
             player.Hand = hand;
             player.Compounds = compounds;
             player.Energy = energy;
-            player.Deck = deck;
+            player.Deck = updateDeck();
 
             Field.craftingDone();
             this.Close();
+        }
+
+        private List<Element> updateDeck()
+        {
+            return null;
         }
 
         /*public Element createElement(int number)
