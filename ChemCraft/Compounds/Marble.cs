@@ -15,7 +15,7 @@ namespace ChemCraft
             state = 0; 
             elementnum = 5;
             damage = 2;
-            formula = "CaCO3";
+            formula = "CaCO₃";
             type = Type.Undetermined;
             elements = new int[5] {20,6,8,8,8};
         }
