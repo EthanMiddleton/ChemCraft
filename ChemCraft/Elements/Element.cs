@@ -45,7 +45,7 @@ namespace ChemCraft
 
         public new int state
         {
-            protected set { State = value; }
+            set { State = value; }
             get { return State; }
         }
 
