@@ -14,7 +14,7 @@ namespace ChemCraft
             state = 0;
             elementnum = 6;
             damage = 2;
-            formula = " NaHCO3";
+            formula = " NaHCO₃";
             type = Type.Undetermined;
             elements = new int[6] {11,1,6,8,8,8};
 
