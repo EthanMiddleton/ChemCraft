@@ -14,22 +14,22 @@ namespace ChemCraft
         public abstract void attack();
         public abstract void defense(); */
 
-        String ElementSymbol;
+        String ElementSymbol, ElementName;
         int AtomicNumber, ValenceElectrons, ValenceShell, State;
         ionType Ion;
-        int id;
 
         #region Properties
-        public int ID
-        {
-            set { id = value; }
-            get { return id; }
-        }
 
         public String elementSymbol
         {
             protected set { ElementSymbol = value; }
             get { return ElementSymbol;  }
+        }
+
+        public String elementName
+        {
+            protected set { ElementName = value; }
+            get { return ElementName;   }
         }
 
         public int atomicNumber
@@ -83,6 +83,7 @@ namespace ChemCraft
        public Hydrogen()
        {
            elementSymbol = "H";
+           elementName = "Hydrogen";
            atomicNumber = 1;
            valenceElectrons = 1;
            valenceShell = 2;
@@ -98,6 +99,7 @@ namespace ChemCraft
        public Helium()
        {
            elementSymbol = "He";
+           elementName = "Helium";
            atomicNumber = 2;
            valenceElectrons = 2;
            valenceShell = 2;
@@ -113,6 +115,7 @@ namespace ChemCraft
        public Lithium()
        {
            elementSymbol = "Li";
+           elementName = "Lithium";
            atomicNumber = 3;
            valenceElectrons = 1;
            valenceShell = 8;
@@ -131,6 +134,7 @@ namespace ChemCraft
        public Beryllium()
        {
            elementSymbol = "Be";
+           elementName = "Beryllium";
            atomicNumber = 4;
            valenceElectrons = 2;
            valenceShell = 8;
@@ -149,6 +153,7 @@ namespace ChemCraft
        public Boron()
        {
            elementSymbol = "B";
+           elementName = "Boron";
            atomicNumber = 5;
            valenceElectrons = 3;
            valenceShell = 8;
@@ -162,6 +167,7 @@ namespace ChemCraft
        public Carbon()
        {
            elementSymbol = "C";
+           elementName = "Carbon";
            atomicNumber = 6;
            valenceElectrons = 4;
            valenceShell = 8;
@@ -176,6 +182,7 @@ namespace ChemCraft
        public Nitrogen()
        {
            elementSymbol = "N";
+           elementName = "Nitrogen";
            atomicNumber = 7;
            valenceElectrons = 5;
            valenceShell = 8;
@@ -191,6 +198,7 @@ namespace ChemCraft
        public Oxygen()
        {
            elementSymbol = "O";
+           elementName = "Oxygen";
            atomicNumber = 8;
            valenceElectrons = 6;
            valenceShell = 8;
@@ -206,6 +214,7 @@ namespace ChemCraft
        public Fluorine()
        {
            elementSymbol = "F";
+           elementName = "Fluorine";
            atomicNumber = 9;
            valenceElectrons = 7;
            valenceShell = 8;
@@ -221,6 +230,7 @@ namespace ChemCraft
        public Neon()
        {
            elementSymbol = "Ne";
+           elementName = "Neon";
            atomicNumber = 10;
            valenceElectrons = 8;
            valenceShell = 8;
