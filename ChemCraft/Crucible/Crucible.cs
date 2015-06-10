@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -11,14 +12,13 @@ namespace ChemCraft
 {
     public partial class Crucible : Form
     {
+        private List<Element>[] elements;
         private Player player;
         private List<Element> hand;
         private List<Compound> compounds;
         private List<Compound> newCompounds;
-        private List<Element> deck;//unimplemented
 
-        int[] totalElements = new int[118];
-        int energy;
+        private int energy;
 
         public Crucible(Player myPlayer)
         {
@@ -27,8 +27,12 @@ namespace ChemCraft
 
             hand = player.Hand;
             compounds = player.Compounds;
-            energy = player.getEnergy;
-            deck = player.deck;
+            energy = player.Energy;
+
+            for(int i = 0; i < 118; i++)
+            {
+                elements[i] = new List<Element>();
+            }
 
             InitializeComponent();
 
@@ -42,16 +46,16 @@ namespace ChemCraft
         {
             //clear variables
             comboBoxElements.Items.Clear();
-            totalElements = new int[118];
 
             for (int i = 0; i < hand.Count; i++)
             {
                 //add the elements to the menu
-                comboBoxElements.Items.Add(hand[i].name);
+                comboBoxElements.Items.Add(hand[i].symbol);
                 //add the elements to the array
-                totalElements[hand[i].number]++;
+                elements[hand[i].atomicNumber].Add(hand[i]);
             }
         }
+
         private void updateHand()
         {
             //clear variable
@@ -61,72 +65,72 @@ namespace ChemCraft
             for(int i = 0; i < 118; i++)
             {
                 //for each amount that kind of element
-                for(int j = 0; j > totalElements[i]; j++)
+                for(int j = 0; j > elements[i].Count; j++)
                 {
                     //add the element the the hand
-                   hand.Add(createElement(i+1));
+                   hand.Add(elements[i][j]);
                 }
             }
         }
 
-        //needs to be updated
+       
         private void updateNewComp()
         {
-            if (totalElements[11 - 1] >= 1 && totalElements[1 - 1] >= 1 && totalElements[6 - 1] >= 1 && totalElements[8 - 1] >= 3)
+            if (elements[11 - 1].Count >= 1 && elements[1 - 1].Count >= 1 && elements[6 - 1].Count >= 1 && elements[8 - 1].Count >= 3)
             {
                 newCompounds.Add(new NaHCO3());
             }
-            if (totalElements[11 - 1] >= 1 && totalElements[17 - 1] >=1 && totalElements[8 - 1] >= 1)
+            if (elements[11 - 1].Count >= 1 && elements[17 - 1].Count >= 1 && elements[8 - 1].Count >= 1)
             {
                 newCompounds.Add(new NaClO());
             }
-            if (totalElements[7 - 1] >= 2 && totalElements[8 - 1] >= 1)
+            if (elements[7 - 1].Count >= 2 && elements[8 - 1].Count >= 1)
             {
                 newCompounds.Add(new N2O());
             }
-            if (totalElements[20 - 1] >= 1 && totalElements[6 - 1] >= 1 && totalElements[8 - 1] >= 3)
+            if (elements[20 - 1].Count >= 1 && elements[6 - 1].Count >= 1 && elements[8 - 1].Count >= 3)
             {
                 newCompounds.Add(new CaCO3());
             }
-            if (totalElements[8 - 1] >= 3 && totalElements[1 - 1] >= 8 && totalElements[8 - 1] >= 1)
+            if (elements[8 - 1].Count >= 3 && elements[1 - 1].Count >= 8 && elements[8 - 1].Count >= 1)
             {
-                newCompounds.Add(new (CH3)2CHOH);
+                newCompounds.Add(new C3H8O());
             }
-            if (totalElements[6 - 1] >= 12 && totalElements[1 - 1] >= 22 && totalElements[8 - 1] >= 11)
+            if (elements[6 - 1].Count >= 12 && elements[1 - 1].Count >= 22 && elements[8 - 1].Count >= 11)
             {
-                newCompounds.Add(new C12H22O11);
+                newCompounds.Add(new C12H22O11());
             }
-            if (totalElements[14 - 1] >= 1 && totalElements[8 - 1] >= 2)
+            if (elements[14 - 1].Count >= 1 && elements[8 - 1].Count >= 2)
             {
-                newCompounds.Add(new SiO2);
+                newCompounds.Add(new SiO2());
             }
-            if (totalElements[1 - 1] >= 1 && totalElements[17 - 1] >= 1)
+            if (elements[1 - 1].Count >= 1 && elements[17 - 1].Count >= 1)
             {
-                newCompounds.Add(new HCl);
+                newCompounds.Add(new HCl());
             }
-            if (totalElements[11 - 1] >= 1 && totalElements[17 - 1] >= 1)
+            if (elements[11 - 1].Count >= 1 && elements[17 - 1].Count >= 1)
             {
-                newCompounds.Add(new NaCl);
+                newCompounds.Add(new NaCl());
             }
-            if (totalElements[11 - 1] >= 1 && totalElements[8 - 1] >= 1 && totalElements[1 - 1] >= 1)
+            if (elements[11 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
             {
-                newCompounds.Add(new NaOH);
+                newCompounds.Add(new NaOH());
             }
-            if (totalElements[6 - 1] >= 8 && totalElements[1 - 1] >= 9 && totalElements[7 - 1] >= 1 && totalElements[8 - 1] >= 2)
+            if (elements[6 - 1].Count >= 8 && elements[1 - 1].Count >= 9 && elements[7 - 1].Count >= 1 && elements[8 - 1].Count >= 2)
             {
-                newCompounds.Add(new C8H9NO2);
+                newCompounds.Add(new C8H9NO2());
             }
-            if (totalElements[1 - 1] >= 2 && totalElements[8 - 1] >= 1)
+            if (elements[1 - 1].Count >= 2 && elements[8 - 1].Count >= 1)
             {
-                newCompounds.Add(new H2O);
+                newCompounds.Add(new H2O());
             }
-            if (totalElements[1 - 1] >= 2 && totalElements[8 - 1] >= 2)
+            if (elements[1 - 1].Count >= 2 && elements[8 - 1].Count >= 2)
             {
-                newCompounds.Add(new H2O2);
+                newCompounds.Add(new H2O2());
             }
-            if (totalElements[19 - 1] >= 1 && totalElements[8 - 1] >= 1 && totalElements[1 - 1] >= 1)
+            if (elements[19 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
             {
-                newCompounds.Add(new KOH);
+                newCompounds.Add(new KOH());
             }
         }
 
@@ -152,7 +156,7 @@ namespace ChemCraft
             {
 
                 //remove the elements from the array
-                totalElements[tmpFormula[i]]--;
+                elements[tmpFormula[i]].RemoveAt(0);
             }
 
             //update
@@ -164,20 +168,24 @@ namespace ChemCraft
         //destroy
         private void button2_Click(object sender, EventArgs e)
         {
+            //tmp variables
+            int[] tmpComp = compounds[comboBoxComp.SelectedIndex].elements;
+            List<Element>[] tempEle = elements;
+
             //for each element inside the compound
-            int[] tmp = compounds[comboBoxComp.SelectedIndex].elements;
-            if (tmp.Length >= energy)
+            if (tmpComp.Length >= energy)
             {
-                for (int i = 0; i < tmp.Length; i++)
+                for (int i = 0; i < tmpComp.Length; i++)
                 {
                     //add the element to the hand
-                    hand.AddRange(createElement(tmp[i + 1]));
+                    hand.Add(tempEle[tmpComp[i]][0]);
+                    tempEle[tmpComp[i]].RemoveAt(0);
                     //take away energy
                     energy--;
                 }
 
                 //remove the compound from the array
-                compounds.Remove(comboBoxComp.SelectedIndex);
+                compounds.RemoveAt(comboBoxComp.SelectedIndex);
 
                 //update
                 updateElements();
@@ -185,7 +193,8 @@ namespace ChemCraft
                 updateNewComp();
             }
         }
-
+        /*
+        //unfinished
         public int findInDeck(Element atom)
         {
             for (int i = 0; i < deck.Count; i++)
@@ -194,7 +203,7 @@ namespace ChemCraft
             }
             return 0;
         }
-
+        */
         //update formula text
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -213,11 +222,16 @@ namespace ChemCraft
 
             player.Hand = hand;
             player.Compounds = compounds;
-            player.getEnergy = energy;
-            player.deck = deck;
+            player.Energy = energy;
+            player.Deck = updateDeck();
 
             Field.craftingDone();
             this.Close();
+        }
+
+        private List<Element> updateDeck()
+        {
+            return null;
         }
 
         /*public Element createElement(int number)
@@ -284,9 +298,9 @@ namespace ChemCraft
             {
                 return new CaCO3();
             }
-            else if (name == "(CH3)2CHOH")
+            else if (name == "C3H8O")
             {
-                return new CH32CHOH();
+                return new C3H8O();
             }
             else if (name == "C12H22O11")
             {

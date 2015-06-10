@@ -20,11 +20,11 @@ namespace ChemCraft
         //chemical formula
         public string formula;
         //type of element
-        public enum type{Undetermined, Acid, Base};
+        public enum Type{Undetermined, Acid, Base};
         //list of elements ATOMIC number
         public int[] elements;
         // type of compound
-        public type a;
+        public Type type;
 
         /// <summary>
         /// determines if the compound attacks that turn

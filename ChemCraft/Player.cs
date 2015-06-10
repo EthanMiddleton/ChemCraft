@@ -65,7 +65,7 @@ namespace ChemCraft
         {
             for (int i = 0; i < compounds.Count; i++)
             {
-               energy += compounds[i].value;
+               energy += compounds[i].elements.Length;
             }
         }
 
@@ -77,12 +77,16 @@ namespace ChemCraft
         //removes a compound (needs to be improved so that you send the compound sent)
         public void removeCompound(int n)
         {
-            Compound tempC = new Compound();
-            tempC = compounds[n];
+            Compound tempC = compounds[n];
             compounds.RemoveAt(n);
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
+        public List<Element> Deck
+        {
+            get { return Deck; }
+            set { Deck = value; }
+        }
         public List<Element> Hand
         {
             get { return hand; }
@@ -107,13 +111,13 @@ namespace ChemCraft
             set { health = value; }
         }
 
-        public List<Compound> defense
+        public List<Compound> Defense
         {
             get { return shield; }
             set { shield = value; }
         }
     
-        public int getEnergy
+        public int Energy
         {
             get { return energy; }
             set { energy = value; }

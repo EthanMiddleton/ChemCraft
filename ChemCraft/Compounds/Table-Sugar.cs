@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class C12H22O11 : Compound
+    public class C12H22O11 : Compound
     {
 
         public C12H22O11() 
@@ -16,7 +16,7 @@ namespace ChemCraft
             elementnum = 45;
             damage = 2;
             formula = "C12H22O11";
-            a = type.Undetermined;
+            type = Type.Undetermined;
             elements = new int[45] {6,6,6,6,6,6,6,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,8,8,8,8,8,8,8,8,8,8,8};
         }
 

@@ -18,27 +18,11 @@ namespace ChemCraft
         // Description to be shown when hovered over
         public string description;
 
-        // State of card
-        public int state;
-
         // Position variables (not player controlled)
         public int x, y;
 
-        // Cost of the card
-        public int cost;
-
-        // Atomic number
-        public int id;
-
-
         // Properties
         #region
-        // State
-        public int State
-        {
-            get{ return state;  }
-            set{ state = value; }
-        }
         // x location
         public int X {
             get { return x;  }

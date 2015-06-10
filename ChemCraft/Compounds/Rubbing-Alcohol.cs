@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class C3H8O : Compound
+    public class C3H8O : Compound
     {
 
         public C3H8O() {
@@ -14,7 +14,7 @@ namespace ChemCraft
             elementnum = 3;
             damage = 2;
             formula = "C3H8O";
-            a = type.Undetermined;
+            type = Type.Undetermined;
             elements = new int[12] {6,6,6,1,1,1,1,1,1,1,1,8};
         }
 

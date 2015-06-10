@@ -54,12 +54,13 @@
     <Compile Include="Compounds\Table-Sugar.cs" />
     <Compile Include="Compounds\Tylenol.cs" />
     <Compile Include="Compounds\Water.cs" />
-    <Compile Include="Crucible\Crucible.cs" />
+    <Compile Include="Crucible\Crucible.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Crucible\Crucible.Designer.cs">
       <DependentUpon>Crucible.cs</DependentUpon>
     </Compile>
     <Compile Include="Deck\Deck.cs" />
-    <Compile Include="Deck\GenerateTheDeck.cs" />
     <Compile Include="Elements\Element.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game1.cs" />
@@ -72,6 +73,9 @@
       <HintPath>$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>

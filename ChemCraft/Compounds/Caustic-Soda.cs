@@ -16,7 +16,7 @@ namespace ChemCraft
             damage = 4;
             name = "Casutic Soda";
             formula = "NaOH";
-            a = type.Undetermined;
+            type = Type.Undetermined;
             elements = new int[3] { 11, 8, 1 };
         }
 

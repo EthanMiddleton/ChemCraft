@@ -16,7 +16,7 @@ namespace ChemCraft
             damage = 3;
             name = "Table Salt";
             formula = "NaCl";
-            a = type.Undetermined;
+            type = Type.Undetermined;
             elements = new int[2] { 11, 17 };
         }
 

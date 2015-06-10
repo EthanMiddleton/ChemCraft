@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class H2O : Compound
+    public class H2O : Compound
     {
 
         public H2O()
@@ -16,7 +16,7 @@ namespace ChemCraft
             elementnum = 3;
             damage = 2;
             formula = "H2O";
-            a = type.Undetermined;
+            type = Type.Undetermined;
             elements = new int[3] { 1, 1, 8 };
         }
 

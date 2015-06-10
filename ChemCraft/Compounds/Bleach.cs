@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    class NaClO : Compound
+    public class NaClO : Compound
     {
        
         public NaClO() 
@@ -16,7 +16,7 @@ namespace ChemCraft
             elementnum = 3;
             damage = 2;
             formula = "NaClO";
-            a = type.Base;
+            type = Type.Base;
             elements = new int[3] {11,17,8};
         }
 

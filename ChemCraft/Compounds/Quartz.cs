@@ -16,7 +16,7 @@ namespace ChemCraft
             damage = 4;
             name = "Quartz";
             formula = "SiO₂";
-            a = type.Undetermined;
+            type = Type.Undetermined;
             elements = new int[3] { 14, 8, 8 };
         }
 
