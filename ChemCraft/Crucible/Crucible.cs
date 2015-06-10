@@ -288,7 +288,7 @@ namespace ChemCraft
         //needs to be updated
         public Compound createCompound(String name)
         {
-            if (name == "NaHCO3")
+            if (name == "NaHCO₃")
             {
                 return new NaHCO3();
             }
@@ -296,23 +296,23 @@ namespace ChemCraft
             {
                 return new NaClO();
             }
-            else if (name == "N2O")
+            else if (name == "N₂O")
             {
                 return new N2O();
             }
-            else if (name == "CaCO3")
+            else if (name == "CaCO₃")
             {
                 return new CaCO3();
             }
-            else if (name == "C3H8O")
+            else if (name == "C₃H₈O")
             {
                 return new C3H8O();
             }
-            else if (name == "C12H22O11")
+            else if (name == "C₁₂H₂₂O₁₁")
             {
                 return new C12H22O11();
             }
-            else if (name == "SiO2")
+            else if (name == "SiO₂")
             {
                 return new SiO2();
             }
@@ -328,15 +328,15 @@ namespace ChemCraft
             {
                 return new NaOH();
             }
-            else if (name == "C8H9NO2")
+            else if (name == "C₈H₉NO₂")
             {
                 return new C8H9NO2();
             }
-            else if (name == "H2O")
+            else if (name == "H₂O")
             {
                 return new H2O();
             }
-            else if (name == "H2O2")
+            else if (name == "H₂O₂")
             {
                 return new H2O2();
             }
