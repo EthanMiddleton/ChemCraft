@@ -17,8 +17,15 @@ namespace ChemCraft
         String ElementSymbol;
         int AtomicNumber, ValenceElectrons, ValenceShell, State;
         ionType Ion;
+        int id;
 
         #region Properties
+        public int ID
+        {
+            set { id = value; }
+            get { return id; }
+        }
+
         public String elementSymbol
         {
             protected set { ElementSymbol = value; }
