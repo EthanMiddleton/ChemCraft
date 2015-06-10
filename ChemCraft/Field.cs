@@ -15,7 +15,7 @@ namespace ChemCraft
         /// </summary>
         #region
         // General field objects
-        Player[] player;
+        public Player[] player;
 
         // Turn taking variables
         enum TurnPos { attackActive, other, crafting };
@@ -34,6 +34,9 @@ namespace ChemCraft
 
         // Variables for drawing
         Vector2 drawPos;
+
+        // Variables for consoleDraw
+        string say;
 
         #endregion
 
@@ -101,6 +104,7 @@ namespace ChemCraft
                     turnCount++;
                 }
             }
+            //consoleDraw();
         }
 
         /// <summary>
@@ -209,6 +213,68 @@ namespace ChemCraft
 
         private void consoleDraw()
         {
+
+            Console.SetWindowSize(100, 11);
+            // Show health and energy
+            say = "Health: " + player[0].Health + "         Energy: " + player[0].Energy;
+            Console.WriteLine(say);
+
+            // Show hand
+            say = player[0].Hand[0].elementSymbol;
+            for (int i = 1; i < player[0].Hand.Count; i++)
+            {
+                say += ", " + player[0].Hand[i].elementSymbol;
+            }
+            Console.WriteLine(say);
+
+            // Show Compounds
+            say = player[0].Compounds[0].GetName;
+            for (int i = 1; i < player[0].Compounds.Count; i++)
+            {
+                say += ", " + player[0].Compounds[i].GetName;
+            }
+            Console.WriteLine(say);
+
+            // Show defenses
+            say = player[0].Defense[0].GetName;
+            for (int i = 1; i < player[0].Defense.Count; i++)
+            {
+                say += ", " + player[0].Defense[i].GetName;
+            }
+            Console.WriteLine(say);
+
+            // Middle stuff
+            Console.WriteLine("Player 1");
+            Console.WriteLine("");
+            Console.WriteLine("Player 2");
+
+            // Show defenses
+            say = player[1].Defense[0].GetName;
+            for (int i = 1; i < player[1].Defense.Count; i++)
+            {
+                say += ", " + player[1].Defense[i].GetName;
+            }
+            Console.WriteLine(say);
+
+            // Show Compounds
+            say = player[1].Compounds[0].GetName;
+            for (int i = 1; i < player[1].Compounds.Count; i++)
+            {
+                say += ", " + player[1].Compounds[i].GetName;
+            }
+            Console.WriteLine(say);
+
+            // Show hand
+            say = player[1].Hand[0].elementSymbol;
+            for (int i = 1; i < player[1].Hand.Count; i++)
+            {
+                say += ", " + player[1].Hand[i].elementSymbol;
+            }
+            Console.WriteLine(say);
+
+            // Show health and energy
+            say = "Health: " + player[1].Health + "         Energy: " + player[1].Energy;
+            Console.WriteLine(say);
 
         }
     }
