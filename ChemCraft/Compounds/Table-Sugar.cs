@@ -9,7 +9,7 @@ namespace ChemCraft
     public class C12H22O11 : Compound
     {
 
-        public C12H22O11() 
+        public C12H22O11(int[] myIDs) 
         {
             name = "Table Sugar";
             state = 0;
@@ -18,6 +18,7 @@ namespace ChemCraft
             formula = "C₁₂H₂₂O₁₁";
             type = Type.Undetermined;
             elements = new int[45] {6,6,6,6,6,6,6,6,6,6,6,6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,8,8,8,8,8,8,8,8,8,8,8};
+            IDS = myIDs;
         }
 
        
