@@ -63,6 +63,16 @@ namespace ChemCraft
         {
             get { return formula; }
         }
+        
+        /// <summary>
+        /// gets the IDs of the elements
+        /// </summary>
+        /// <returns>int array</returns>
+        public int[] IDS
+        {
+            protected set { IDs = value; }
+            get { return IDs; }
+        }
 
         /// <summary>
         ///the compounds ability
