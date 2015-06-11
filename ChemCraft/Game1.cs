@@ -148,7 +148,7 @@ namespace ChemCraft
             {
                 say += ", " + field.player[1].Hand[i].elementSymbol;
             }
-            Console.WriteLine(say);
+            Debug.WriteLine(say);
 
             // Show health and energy
             say = "Health: " + field.player[1].Health + "         Energy: " + field.player[1].Energy;
