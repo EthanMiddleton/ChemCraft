@@ -9,7 +9,7 @@ namespace ChemCraft
     public class NaOH : Compound
     {
 
-        public NaOH()
+        public NaOH(int[] myIDs)
         {
             elementnum = 3;
             state = 0;
@@ -18,6 +18,7 @@ namespace ChemCraft
             formula = "NaOH";
             type = Type.Undetermined;
             elements = new int[3] { 11, 8, 1 };
+            IDS = myIDs;
         }
 
         /// <summary>
