@@ -59,10 +59,12 @@ namespace ChemCraft
             mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
+             //Do something.
             }
 
             if (mouseState.RightButton == ButtonState.Pressed)
-            {           
+            {        
+              //Do something.
             }
         }
 
@@ -72,26 +74,32 @@ namespace ChemCraft
             
             if(keyState.IsKeyDown(Keys.D1))
             {
+             //Select the first element in the player's hand when they press the "1" key.
             }
 
             else if(keyState.IsKeyDown(Keys.D2))
-            {      
+            {   
+             //Select the second element in the player's hand when they press the "2" key.
             }
 
             else if(keyState.IsKeyDown(Keys.D3))
             {     
+             //Select the third element in the player's hand when they press the "3" key.
             }
 
             else if(keyState.IsKeyDown(Keys.D4))
             {
+             //Select the fourth element in the player's hand when they press the "4" key.
             }
 
             else if(keyState.IsKeyDown(Keys.D5))
             {
+             //Select the fifth element in the player's hand when they press the "5" key.
             }
 
             else if(keyState.IsKeyDown(Keys.D6))
             {
+             //Select the sixth element in the player's hand when they press the "6" key.
             }
         }
 
@@ -127,10 +135,12 @@ namespace ChemCraft
 
         public void selectElement()
         {
+         //Add whatever element is being selected to a list of selected elements.
         }
 
         public void selectCompound()
         {
+         //Add whatever compound is being selected to a list of selected compounds.
         }
 
         public Rectangle GetBounds()
