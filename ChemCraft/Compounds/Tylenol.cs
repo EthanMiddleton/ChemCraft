@@ -9,7 +9,7 @@ namespace ChemCraft
     public class C8H9NO2 : Compound
     {
 
-        public C8H9NO2()
+        public C8H9NO2(int[] myIDs)
         {
             elementnum = 20;
             state = 0;
@@ -18,6 +18,7 @@ namespace ChemCraft
             formula = "C₈H₉NO₂";
             type = Type.Base;
             elements = new int[20] { 6, 6, 6, 6, 6, 6, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 8, 8 };
+            IDS = myIDs;
         }
 
         /// <summary>
