@@ -9,7 +9,7 @@ namespace ChemCraft
     public class H2O : Compound
     {
 
-        public H2O()
+        public H2O(int[] myIDs)
         {
             name = "Water";
             state = 0;
@@ -18,6 +18,7 @@ namespace ChemCraft
             formula = "H₂O";
             type = Type.Undetermined;
             elements = new int[3] { 1, 1, 8 };
+            IDS = myIDs;
         }
 
         /// <summary>
