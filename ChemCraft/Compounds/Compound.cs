@@ -6,9 +6,9 @@ using System.Text;
 
 namespace ChemCraft
 {
-     public abstract class Compound : Card
+    public abstract class Compounds
     {
-        
+
         //number of elements
         public int elementnum;
         // whether the attacking is true
@@ -20,11 +20,13 @@ namespace ChemCraft
         //chemical formula
         public string formula;
         //type of element
-        public enum Type{Undetermined, Acid, Base};
-        //list of elements ATOMIC number
+        public enum type { Undetermined, Acid, Base };
+        //list of IDs
+        public int[] IDs;
+        //list of atomic number of elements
         public int[] elements;
-        // type of compound
-        public Type type;
+        //type of the compound
+        public type a;
 
         /// <summary>
         /// determines if the compound attacks that turn
@@ -33,7 +35,6 @@ namespace ChemCraft
         public int attack
         {
             get { return damage; }
-
         }
 
         /// <summary>
@@ -43,33 +44,40 @@ namespace ChemCraft
         public int defend
         {
             get { return 0; }
-
         }
 
         /// <summary>
         /// gets the name of compund
         /// </summary>
         /// <returns>name</returns>
-        public string GetName 
+        public string Name
         {
             get { return name; }
-        
         }
 
         /// <summary>
         /// gets chemical formula
         /// </summary>
         /// <returns>formula</returns>
-        public string GetFormula 
+        public string Formula
         {
             get { return formula; }
+        }
         
+        /// <summary>
+        /// gets the IDs of the elements
+        /// </summary>
+        /// <returns>int array</returns>
+        public int[] IDS
+        {
+            protected set { IDs = value; }
+            get { return IDs; }
         }
 
         /// <summary>
         ///the compounds ability
         /// </summary>
-        public abstract void ability();
+        abstract public void ability();
 
 
     }
