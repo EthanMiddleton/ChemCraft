@@ -120,7 +120,8 @@ namespace ChemCraft
                 newCompounds.Add(new KOH());
             }
 
-            for(int i = 0; i < newCompounds.Count; i++)
+            comboBoxNewComp.Items.Clear();
+            for (int i = 0; i < newCompounds.Count; i++)
             {
                 comboBoxNewComp.Items.Add(newCompounds[i].GetName);
             }
@@ -128,11 +129,12 @@ namespace ChemCraft
 
         private void updateExistComp()
         {
+            comboBoxComp.Items.Clear();
             //for each compound
-            for (int i = 0; i > compounds.Count; i++)
-            {
-                //add the compound to the menu
-                comboBoxComp.Items.Add(compounds[i].name);
+                for (int i = 0; i < compounds.Count; i++)
+                {
+                    //add the compound to the menu
+                    comboBoxComp.Items.Add(compounds[i].name);
             }
         }
 
@@ -140,7 +142,7 @@ namespace ChemCraft
         private void button1_Click(object sender, EventArgs e)
         {
             //add the compound to the array
-            compounds.Add(createCompound(comboBoxNewComp.Text));
+            compounds.Add(newCompounds[comboBoxNewComp.SelectedIndex]);
 
             //for each element required in the compound
             int[] tmpFormula = newCompounds[newCompounds.Count-1].elements;
@@ -155,6 +157,7 @@ namespace ChemCraft
 
             //update
             updateExistComp();
+            updateElements();
             updateNewComp();
         }
 
