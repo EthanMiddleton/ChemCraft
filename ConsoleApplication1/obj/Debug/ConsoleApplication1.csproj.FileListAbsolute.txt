@@ -1,0 +1,16 @@
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\obj\Debug\ChemCraft.Crucible.resources
+C:\Users\Ethan\Downloads\ChemCraft-master (2)\ChemCraft-master\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.GenerateResource.Cache
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ChemCraft.Crucible.resources
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.GenerateResource.Cache
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\kickash32\Desktop\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
