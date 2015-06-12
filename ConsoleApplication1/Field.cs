@@ -181,13 +181,13 @@ namespace ChemCraft
             selectedString = Console.ReadLine();
             for (int i = 0; i < player[cPlayer].Compounds.Count; i++)
             {
-                if (selectedString.Equals(i))
+                if (selectedString == Convert.ToString(i))
                 {
                     selected = Convert.ToInt16(selectedString);
                     attack(cPlayer);
-                    turnPos = TurnPos.other;
                 }
             }
+            turnPos = TurnPos.other;
         }
 
         /// <summary>

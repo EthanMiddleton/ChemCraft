@@ -7,15 +7,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ChemCraft;
 
 namespace ChemCraft
 {
     public partial class Crucible : Form
     {
-        private List<Element>[] elements;
+        private List<List<Element>> elements = new List<List<Element>>();
         private Player player;
         private List<Element> hand;
-        private List<Element> deck;
+        private Deck deck;
         private List<Compound> compounds;
         private List<Compound> newCompounds;
 
@@ -31,9 +32,11 @@ namespace ChemCraft
             compounds = player.Compounds;
             energy = player.Energy;
 
+            newCompounds = new List<Compound>();
+
             for(int i = 0; i < 118; i++)
             {
-                elements[i] = new List<Element>();
+                elements.Add(new List<Element>());
             }
 
             InitializeComponent();
@@ -52,36 +55,11 @@ namespace ChemCraft
             for (int i = 0; i < hand.Count; i++)
             {
                 //add the elements to the menu
-                comboBoxElements.Items.Add(hand[i].symbol);
+                comboBoxElements.Items.Add(hand[i].elementSymbol);
                 //add the elements to the array
-                elements[hand[i].atomicNumber].Add(hand[i]);
+                elements[hand[i].atomicNumber-1].Add(hand[i]);
             }
         }
-        /*
-        private void updateHand()
-        {
-            //clear the hand
-            for (int i = 0; i < hand.Count; i++)
-            {
-                deck[hand[0].ID].state = 1;
-                hand.RemoveAt(0);
-            }
-
-            int index = 0;
-                //for each kind of element
-                for (int i = 0; i < 118; i++)
-                {
-                    //for each amount that kind of element
-                    for (int j = 0; j > elements[i].Count; j++)
-                    {
-                        //add the element the the hand
-                        hand.Add(elements[i][j]);
-                        deck[hand[index].ID].state = 2;
-                        index++;
-                    }
-                }
-        }
-        */
        
         private void updateNewComp()
         {
@@ -141,6 +119,11 @@ namespace ChemCraft
             {
                 newCompounds.Add(new KOH());
             }
+
+            for(int i = 0; i < newCompounds.Count; i++)
+            {
+                comboBoxNewComp.Items.Add(newCompounds[i].GetName);
+            }
         }
 
         private void updateExistComp()
@@ -160,14 +143,14 @@ namespace ChemCraft
             compounds.Add(createCompound(comboBoxNewComp.Text));
 
             //for each element required in the compound
-            int[] tmpFormula = newCompounds[newCompounds.Count].elements;
+            int[] tmpFormula = newCompounds[newCompounds.Count-1].elements;
             for(int i = 0; i < tmpFormula.Length; i++)
             {
 
                 //remove the elements
-                deck[elements[tmpFormula[i]][0].ID].state = 4;
-                hand.Remove(elements[tmpFormula[i]][0]);
-                elements[tmpFormula[i]].RemoveAt(0);
+                deck.List[elements[tmpFormula[i]-1][0].ID].state = 4;
+                hand.Remove(elements[tmpFormula[i]-1][0]);
+                elements[tmpFormula[i]-1].RemoveAt(0);
             }
 
             //update
@@ -180,7 +163,7 @@ namespace ChemCraft
         {
             //tmp variables
             int[] tmpComp = compounds[comboBoxComp.SelectedIndex].elements;
-            List<Element>[] tempEle = elements;
+            List<List<Element>> tempEle = elements;
 
             //for each element inside the compound
             if (tmpComp.Length >= energy)
@@ -189,7 +172,7 @@ namespace ChemCraft
                 {
                     //add the element to the hand
                     hand.Add(tempEle[tmpComp[i]][0]);
-                    deck[hand[hand.Count].ID].state = 2;
+                    deck.List[hand[hand.Count].ID].state = 2;
                     tempEle[tmpComp[i]].RemoveAt(0);
                     //take away energy
                     energy--;
@@ -204,17 +187,7 @@ namespace ChemCraft
                 updateNewComp();
             }
         }
-        /*
-        //unfinished
-        public int findInDeck(Element atom)
-        {
-            for (int i = 0; i < deck.Count; i++)
-            {
-                if (deck[i].
-            }
-            return 0;
-        }
-        */
+
         //update formula text
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -239,51 +212,6 @@ namespace ChemCraft
             Field.craftingDone();
             this.Close();
         }
-
-        /*public Element createElement(int number)
-        {
-            if (number == 1)
-            {
-                return new Hydrogen();
-            }
-            if (number == 2)
-            {
-                return new Helium();
-            }
-            if (number == 3)
-            {
-                return new Lithium();
-            }
-            if (number == 4)
-            {
-                return new Beryllium();
-            }
-            if (number == 5)
-            {
-                return new Boron();
-            }
-            if (number == 6)
-            {
-                return new Carbon();
-            }
-            if (number == 7)
-            {
-                return new Nitrogen();
-            }
-            if (number == 8)
-            {
-                return new Oxygen();
-            }
-            if (number == 9)
-            {
-                return new Fluorine();
-            }
-            if (number == 10)
-            {
-                return new Neon();
-            }
-            return null;
-        }*/
 
         //needs to be updated
         public Compound createCompound(String name)

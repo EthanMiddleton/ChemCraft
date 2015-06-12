@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ChemCraft
 {
@@ -37,8 +38,18 @@ namespace ChemCraft
         //draw cards until the plaer hand has 6 cards
         public void DrawCards()
         {
-            while (hand.Count < 6)
-                hand.Add(Draw());
+            //while (hand.Count < 8)
+            //   hand.Add(Draw());
+            for (int i = 0; i < hand.Count; i++)
+            {
+                hand.RemoveAt(0);
+            }
+            hand.Add(new Hydrogen());
+            hand.Add(new Hydrogen());
+            hand.Add(new Hydrogen());
+            hand.Add(new Hydrogen());
+            hand.Add(new Oxygen());
+            hand.Add(new Hydrogen());
         }
         //draws a single card from the deck that hasn't previously been drawn
         private Element Draw()
@@ -73,7 +84,7 @@ namespace ChemCraft
         // use crucible
         public void useCrucible()
         {
-            crucible = new Crucible(this);
+            Application.Run(new Crucible(this));
         }
 
         //removes a compound (needs to be improved so that you send the compound sent)
@@ -84,10 +95,10 @@ namespace ChemCraft
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
-        public List<Element> Deck
+        public Deck Deck
         {
-            get { return Deck; }
-            set { Deck = value; }
+            get { return deck; }
+            set { deck = value; }
         }
         public List<Element> Hand
         {
