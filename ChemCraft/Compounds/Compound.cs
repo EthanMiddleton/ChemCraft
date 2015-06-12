@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ChemCraft
 {
-    public abstract class Compounds
+    public abstract class Compound
     {
 
         //number of elements
