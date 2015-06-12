@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ChemCraft
 {
@@ -73,7 +74,7 @@ namespace ChemCraft
         // use crucible
         public void useCrucible()
         {
-            crucible = new Crucible(this);
+            Application.Run(new Crucible(this));
         }
 
         //removes a compound (needs to be improved so that you send the compound sent)
