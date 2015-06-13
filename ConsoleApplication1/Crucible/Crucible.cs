@@ -68,68 +68,56 @@ namespace ChemCraft
         private void updateNewComp()
         {
             newCompounds.Clear();
+
             if (elements[11 - 1].Count >= 1 && elements[1 - 1].Count >= 1 && elements[6 - 1].Count >= 1 && elements[8 - 1].Count >= 3)
-            {
-                newCompounds.Add(new NaHCO3());
-            }
+                newCompounds.Add(createCompound(new NaHCO3()));
             if (elements[11 - 1].Count >= 1 && elements[17 - 1].Count >= 1 && elements[8 - 1].Count >= 1)
-            {
-                newCompounds.Add(new NaClO());
-            }
+                newCompounds.Add(createCompound(new NaClO()));
             if (elements[7 - 1].Count >= 2 && elements[8 - 1].Count >= 1)
-            {
-                newCompounds.Add(new N2O());
-            }
+                newCompounds.Add(createCompound(new N2O()));
             if (elements[20 - 1].Count >= 1 && elements[6 - 1].Count >= 1 && elements[8 - 1].Count >= 3)
-            {
-                newCompounds.Add(new CaCO3());
-            }
+                newCompounds.Add(createCompound(new CaCO3()));
             if (elements[8 - 1].Count >= 3 && elements[1 - 1].Count >= 8 && elements[8 - 1].Count >= 1)
-            {
-                newCompounds.Add(new C3H8O());
-            }
+                newCompounds.Add(createCompound(new C3H8O()));
             if (elements[6 - 1].Count >= 12 && elements[1 - 1].Count >= 22 && elements[8 - 1].Count >= 11)
-            {
-                newCompounds.Add(new C12H22O11());
-            }
+                newCompounds.Add(createCompound(new C12H22O11()));
             if (elements[14 - 1].Count >= 1 && elements[8 - 1].Count >= 2)
-            {
-                newCompounds.Add(new SiO2());
-            }
+                newCompounds.Add(createCompound(new SiO2()));
             if (elements[1 - 1].Count >= 1 && elements[17 - 1].Count >= 1)
-            {
-                newCompounds.Add(new HCl());
-            }
+                newCompounds.Add(createCompound(new HCl()));
             if (elements[11 - 1].Count >= 1 && elements[17 - 1].Count >= 1)
-            {
-                newCompounds.Add(new NaCl());
-            }
+                newCompounds.Add(createCompound(new NaCl()));
             if (elements[11 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
-            {
-                newCompounds.Add(new NaOH());
-            }
+                newCompounds.Add(createCompound(new NaOH()));
             if (elements[6 - 1].Count >= 8 && elements[1 - 1].Count >= 9 && elements[7 - 1].Count >= 1 && elements[8 - 1].Count >= 2)
-            {
-                newCompounds.Add(new C8H9NO2());
-            }
+                newCompounds.Add(createCompound(new C8H9NO2()));
             if (elements[1 - 1].Count >= 2 && elements[8 - 1].Count >= 1)
-            {
-                newCompounds.Add(new H2O());
-            }
+                newCompounds.Add(createCompound(new H2O()));
             if (elements[1 - 1].Count >= 2 && elements[8 - 1].Count >= 2)
-            {
-                newCompounds.Add(new H2O2());
-            }
+                newCompounds.Add(createCompound(new H2O2()));
             if (elements[19 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
-            {
-                newCompounds.Add(new KOH());
-            }
+                newCompounds.Add(createCompound(new KOH()));
 
             comboBoxNewComp.Items.Clear();
             for (int i = 0; i < newCompounds.Count; i++)
             {
                 comboBoxNewComp.Items.Add(newCompounds[i].GetName);
             }
+        }
+
+        private Compound createCompound(Compound newCompound)
+        {
+            /*int[] myIDs = new int[newCompound.elements.Length];
+            
+            List<List<Element>> tmpEle = elements;
+            for (int i = 0; i < myIDs.Length; i++)
+            {
+                myIDs[i] = tmpEle[newCompound.elements[i] - 1][0].ID;
+                tmpEle[newCompound.elements[i] - 1].RemoveAt(0);
+            }
+            newCompound.IDs = myIDs;*/
+
+            return newCompound;
         }
 
         private void updateExistComp()

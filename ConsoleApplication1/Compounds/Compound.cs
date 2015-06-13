@@ -23,6 +23,8 @@ namespace ChemCraft
         public enum Type{Undetermined, Acid, Base};
         //list of elements ATOMIC number
         public int[] elements;
+        //list of elements IDs
+        public int[] IDs;
         // type of compound
         public Type type;
 
