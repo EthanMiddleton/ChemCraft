@@ -88,6 +88,27 @@ namespace ChemCraft
             }
         }
 
+        //draws a single card from the deck that hasn't previously been drawn
+        private Element Draw()
+        {
+            //boolean that ensures you find a card that hasn't been found
+            Boolean check = false;
+            //random card that is selected
+            Random rnd = new Random();
+            //loops until card is found that hasn't bee picked
+            while (check == false)
+            {
+                int rand = rnd.Next(52);
+                if (List[rand].state == 1)
+                {
+                    List[rand].state = 2;
+                    check = true;
+                    return List[rand];
+                }
+            }
+            return null;
+        }
+
         public List<Element> List{
             set { list = value; }
             get { return list;  }

@@ -39,7 +39,7 @@ namespace ChemCraft
         public void DrawCards()
         {
             //while (hand.Count < 8)
-            //   hand.Add(Draw());
+            //   hand.Add(Deck.Draw());
             for (int i = 0; i < hand.Count; i++)
             {
                 hand.RemoveAt(0);
@@ -50,26 +50,6 @@ namespace ChemCraft
             hand.Add(new Hydrogen());
             hand.Add(new Oxygen());
             hand.Add(new Hydrogen());
-        }
-        //draws a single card from the deck that hasn't previously been drawn
-        private Element Draw()
-        {
-            //boolean that ensures you find a card that hasn't been found
-            Boolean check = false;
-            //random card that is selected
-            Random rnd = new Random();
-            //loops until card is found that hasn't bee picked
-            while (check == false)
-            {
-                int rand = rnd.Next(52);
-                if (deck.List[rand].state == 1)
-                {
-                    deck.List[rand].state = 2;
-                    check = true;
-                    return deck.List[rand];
-                }
-            }
-            return null;
         }
 
         //method to determine amount of income
