@@ -67,6 +67,7 @@ namespace ChemCraft
        
         private void updateNewComp()
         {
+            newCompounds.Clear();
             if (elements[11 - 1].Count >= 1 && elements[1 - 1].Count >= 1 && elements[6 - 1].Count >= 1 && elements[8 - 1].Count >= 3)
             {
                 newCompounds.Add(new NaHCO3());

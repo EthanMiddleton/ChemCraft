@@ -188,3 +188,11 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+*.pdb
+ConsoleApplication1/obj/Debug/ConsoleApplication1.pdb
+*.exe
+ConsoleApplication1/obj/Debug/ConsoleApplication1.exe
+*.pdb
+ConsoleApplication1/bin/Debug/ConsoleApplication1.exe
+*.cache
+ConsoleApplication1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
