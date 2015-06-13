@@ -13,7 +13,8 @@ namespace ChemCraft
 {
     public partial class Crucible : Form
     {
-        private List<List<Element>> elements = new List<List<Element>>();
+        private List<List<Element>> elements;
+        private List<List<Element>> compElements;
         private Player player;
         private List<Element> hand;
         private Deck deck;
@@ -34,9 +35,12 @@ namespace ChemCraft
 
             newCompounds = new List<Compound>();
 
-            for(int i = 0; i < 118; i++)
+            elements = new List<List<Element>>();
+            compElements = new List<List<Element>>();
+            for (int i = 0; i < 118; i++)
             {
                 elements.Add(new List<Element>());
+                compElements.Add(new List<Element>());
             }
 
             InitializeComponent();
@@ -152,6 +156,7 @@ namespace ChemCraft
                 //remove the elements
                 deck.List[elements[tmpFormula[i]-1][0].ID].state = 4;
                 hand.Remove(elements[tmpFormula[i]-1][0]);
+                compElements[tmpFormula[i] - 1].Add(elements[tmpFormula[i] - 1][0]);
                 elements[tmpFormula[i]-1].RemoveAt(0);
             }
 
@@ -166,7 +171,7 @@ namespace ChemCraft
         {
             //tmp variables
             int[] tmpComp = compounds[comboBoxComp.SelectedIndex].elements;
-            List<List<Element>> tempEle = elements;
+            List<List<Element>> tempEle = compElements;
 
             //for each element inside the compound
             if (tmpComp.Length >= energy)
@@ -174,9 +179,9 @@ namespace ChemCraft
                 for (int i = 0; i < tmpComp.Length; i++)
                 {
                     //add the element to the hand
-                    hand.Add(tempEle[tmpComp[i]][0]);
-                    deck.List[hand[hand.Count].ID].state = 2;
-                    tempEle[tmpComp[i]].RemoveAt(0);
+                    hand.Add(tempEle[tmpComp[i]-1][0]);
+                    deck.List[hand[hand.Count-1].ID].state = 2;
+                    tempEle[tmpComp[i]-1].RemoveAt(0);
                     //take away energy
                     energy--;
                 }
@@ -214,68 +219,6 @@ namespace ChemCraft
 
             Field.craftingDone();
             this.Close();
-        }
-
-        //needs to be updated
-        public Compound createCompound(String name)
-        {
-            if (name == "NaHCO₃")
-            {
-                return new NaHCO3();
-            }
-            else if (name == "NaClO")
-            {
-                return new NaClO();
-            }
-            else if (name == "N₂O")
-            {
-                return new N2O();
-            }
-            else if (name == "CaCO₃")
-            {
-                return new CaCO3();
-            }
-            else if (name == "C₃H₈O")
-            {
-                return new C3H8O();
-            }
-            else if (name == "C₁₂H₂₂O₁₁")
-            {
-                return new C12H22O11();
-            }
-            else if (name == "SiO₂")
-            {
-                return new SiO2();
-            }
-            else if (name == "HCl")
-            {
-                return new HCl();
-            }
-            else if (name == "NaCl")
-            {
-                return new NaCl();
-            }
-            else if (name == "NaOH")
-            {
-                return new NaOH();
-            }
-            else if (name == "C₈H₉NO₂")
-            {
-                return new C8H9NO2();
-            }
-            else if (name == "H₂O")
-            {
-                return new H2O();
-            }
-            else if (name == "H₂O₂")
-            {
-                return new H2O2();
-            }
-            else if (name == "KOH")
-            {
-                return new KOH();
-            }
-            return null;
         }
     }
 }
