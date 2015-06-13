@@ -160,6 +160,9 @@ namespace ChemCraft
                 elements[tmpFormula[i]-1].RemoveAt(0);
             }
 
+            //remove the compound from the array
+            newCompounds.RemoveAt(comboBoxNewComp.SelectedIndex);
+
             //update
             updateExistComp();
             updateElements();
