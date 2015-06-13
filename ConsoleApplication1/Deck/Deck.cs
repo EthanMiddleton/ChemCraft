@@ -88,14 +88,6 @@ namespace ChemCraft
             }
         }
 
-        /*public Card DealCard()
-        {
-            if (CurrentCard < deck.Length)
-                return deck[CurrentCard++]
-                    else
-                null;
-        }*/
-
         public List<Element> List{
             set { list = value; }
             get { return list;  }
