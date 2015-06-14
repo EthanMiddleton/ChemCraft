@@ -38,39 +38,39 @@ namespace ChemCraft
                 int slot = RandomNumber.Next(300);
                 if (slot >= 0 && slot < 50)
                 {
-                    list.Add(hydro);
+                    list.Add(new Hydrogen());
                 }
                 if(slot >= 50 && slot < 80)
                 {
-                    list.Add(helo);
+                    list.Add(new Helium());
                 }
                 if(slot >= 80 && slot < 110)
                 {
-                    list.Add(lith);
+                    list.Add(new Lithium());
                 }
                 if(slot >= 110 && slot < 150)
                 {
-                    list.Add(bery);
+                    list.Add(new Beryllium());
                 }
                 if(slot >= 150 && slot < 190)
                 {
-                    list.Add(bor);
+                    list.Add(new Boron());
                 }
                 if(slot >= 190 && slot < 200)
                 {
-                    list.Add(car);
+                    list.Add(new Carbon());
                 }
                 if(slot >= 200 && slot < 230)
                 {
-                    list.Add(nitro);
+                    list.Add(new Nitrogen());
                 }
                 if(slot>= 230 && slot < 280)
                 {
-                    list.Add(oxy);
+                    list.Add(new Oxygen());
                 }
                 if(slot>= 280 && slot < 300)
                 {
-                    list.Add(fluoro);
+                    list.Add(new Fluorine());
                 }
                 
                 list[i].ID = i;
