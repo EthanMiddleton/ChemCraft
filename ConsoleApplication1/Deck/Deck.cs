@@ -7,19 +7,7 @@ using System.Threading.Tasks;
 namespace ChemCraft
 {
     public class Deck
-    {
-      //  List<Token> deck = new List<Token>();
-
-        Hydrogen hydro = new Hydrogen();
-        Helium helo = new Helium();
-        Lithium lith = new Lithium();
-        Beryllium bery = new Beryllium();
-        Boron bor = new Boron();
-        Carbon car = new Carbon();
-        Nitrogen nitro = new Nitrogen();
-        Oxygen oxy = new Oxygen();
-        Fluorine fluoro = new Fluorine();
-
+    { 
         Random RandomNumber = new Random();
 
         List<Element> list = new List<Element>(); 
@@ -30,85 +18,16 @@ namespace ChemCraft
 
         public Deck()
         {
-            int[] AtomicNumbers = new int[19];
-
-            CurrentCard = 0;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 3; i++)
             {
-                int slot = RandomNumber.Next(300);
-                if (slot >= 0 && slot < 50)
-                {
-                    list.Add(new Hydrogen());
-                }
-                if(slot >= 50 && slot < 80)
-                {
-                    list.Add(new Helium());
-                }
-                if(slot >= 80 && slot < 110)
-                {
-                    list.Add(new Lithium());
-                }
-                if(slot >= 110 && slot < 150)
-                {
-                    list.Add(new Beryllium());
-                }
-                if(slot >= 150 && slot < 190)
-                {
-                    list.Add(new Boron());
-                }
-                if(slot >= 190 && slot < 200)
-                {
-                    list.Add(new Carbon());
-                }
-                if(slot >= 200 && slot < 230)
-                {
-                    list.Add(new Nitrogen());
-                }
-                if(slot>= 230 && slot < 280)
-                {
-                    list.Add(new Oxygen());
-                }
-                if(slot>= 280 && slot < 300)
-                {
-                    list.Add(new Fluorine());
-                }
-                
+                list.Add(new Hydrogen());
                 list[i].ID = i;
             }
-            // Shuffle();
-        }
-
-        public void Shuffle()
-        {
-            CurrentCard = 0;
-            for (int first = 0; first < 100; first++)
+            for (int a = 3; a < 6; a++)
             {
-                int Second = RandomNumber.Next(AmountofCards);
-                Element temp = list[first];
-                list[first] = list[Second];
-                list[Second] = temp;
+                list.Add(new Oxygen());
+                list[a].ID = a;
             }
-        }
-
-        //draws a single card from the deck that hasn't previously been drawn
-        private Element Draw()
-        {
-            //boolean that ensures you find a card that hasn't been found
-            Boolean check = false;
-            //random card that is selected
-            Random rnd = new Random();
-            //loops until card is found that hasn't bee picked
-            while (check == false)
-            {
-                int rand = rnd.Next(52);
-                if (List[rand].state == 1)
-                {
-                    List[rand].state = 2;
-                    check = true;
-                    return List[rand];
-                }
-            }
-            return null;
         }
 
         public List<Element> List{

@@ -56,6 +56,12 @@ namespace ChemCraft
             //clear variables
             comboBoxElements.Items.Clear();
 
+            elements = new List<List<Element>>();
+            for (int i = 0; i < 118; i++)
+            {
+                elements.Add(new List<Element>());
+            }
+
             for (int i = 0; i < hand.Count; i++)
             {
                 //add the elements to the menu
