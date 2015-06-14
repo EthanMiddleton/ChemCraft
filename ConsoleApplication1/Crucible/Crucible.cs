@@ -37,7 +37,7 @@ namespace ChemCraft
 
             elements = new List<List<Element>>();
             compElements = new List<List<Element>>();
-            for (int i = 0; i < 118; i++)
+            for (int i = 0; i < 20; i++)
             {
                 elements.Add(new List<Element>());
                 compElements.Add(new List<Element>());
@@ -114,12 +114,20 @@ namespace ChemCraft
         private Compound createCompound(Compound newCompound)
         {
             int[] myIDs = new int[newCompound.elements.Length];
-            
-            List<List<Element>> tmpEle = elements;
+            int j =  0;
             for (int i = 0; i < myIDs.Length; i++)
             {
-                myIDs[i] = tmpEle[newCompound.elements[i] - 1][0].ID;
-                tmpEle[newCompound.elements[i] - 1].RemoveAt(0);
+                myIDs[i] = elements[newCompound.elements[i] - 1][j].ID;
+                try
+                {
+                    if(newCompound.elements[i] != newCompound.elements[i + 1])
+                    {
+                        j = 0;
+                    }
+                }catch(Exception e)
+                {
+
+                }
             }
             newCompound.IDs = myIDs;
 
@@ -140,26 +148,21 @@ namespace ChemCraft
         //create
         private void button1_Click(object sender, EventArgs e)
         {
-            //tmp variables
-            Compound tmpCompound = newCompounds[comboBoxNewComp.SelectedIndex];
-            int[] tmpFormula = tmpCompound.elements;
-            Element tmpElement;
-
             //add the compound to the array
-            compounds.Add(tmpCompound);
+            compounds.Add(newCompounds[comboBoxNewComp.SelectedIndex]);
 
             //for each element required in the compound
-            for(int i = 0; i < tmpFormula.Length; i++)
+            int[] tmpFormula = newCompounds[newCompounds.Count - 1].elements;
+            for (int i = 0; i < tmpFormula.Length; i++)
             {
-                tmpElement = deck.List[tmpCompound.IDs[i]];
+                
+                
                 //remove the elements
-
-                tmpElement.state = 4;
-                hand.Remove(tmpElement);
-                compElements[tmpFormula[i] - 1].Add(tmpElement);
-                elements[tmpFormula[i]-1].RemoveAt(0);
+                deck.List[elements[tmpFormula[i] - 1][0].ID].state = 4;
+                hand.Remove(elements[tmpFormula[i] - 1][0]);
+                compElements[tmpFormula[i] - 1].Add(elements[tmpFormula[i] - 1][0]);
+                elements[tmpFormula[i] - 1].RemoveAt(0);
             }
-
             //remove the compound from the array
             newCompounds.RemoveAt(comboBoxNewComp.SelectedIndex);
 
@@ -168,7 +171,6 @@ namespace ChemCraft
             updateElements();
             updateNewComp();
         }
-
         //destroy
         private void button2_Click(object sender, EventArgs e)
         {

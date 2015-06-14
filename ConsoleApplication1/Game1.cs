@@ -12,8 +12,8 @@ namespace ChemCraft
     {
 
         // Field Class where all actions are performed
-        Field field;
-        string say;
+         Field field = new Field();
+         string say;
 
         public Game1()
         {
@@ -21,7 +21,7 @@ namespace ChemCraft
             Update();
         }
 
-        public void Update()
+        public  void Update()
         {
             while (true)
             {
@@ -33,7 +33,7 @@ namespace ChemCraft
         private void ConsoleDraw()
         {
 
-            //Console.SetWindowSize(1, 1);
+            Console.SetWindowSize(100, 12);
             // Show health and energy
             say = "Health: " + field.player[0].Health + "         Energy: " + field.player[0].Energy;
             Console.WriteLine(say);
@@ -47,6 +47,7 @@ namespace ChemCraft
             Console.WriteLine(say);
 
             // Show Compounds
+            say = "";
             if (field.player[0].Compounds.Count > 0)
             {
                 say = field.player[0].Compounds[0].GetName;
@@ -58,6 +59,7 @@ namespace ChemCraft
             Console.WriteLine(say);
 
             // Show defenses
+            say = "";
             if (field.player[0].Defense.Count > 0)
             {
                 say = field.player[0].Defense[0].GetName;
@@ -74,6 +76,7 @@ namespace ChemCraft
             Console.WriteLine("Player 2");
 
             // Show defenses
+            say = "";
             if (field.player[1].Defense.Count > 0)
             {
                 say = field.player[1].Defense[0].GetName;
@@ -85,6 +88,7 @@ namespace ChemCraft
             Console.WriteLine(say);
 
             // Show Compounds
+            say = "";
             if (field.player[1].Compounds.Count > 0)
             {
                 say = field.player[1].Compounds[0].GetName;
@@ -96,6 +100,7 @@ namespace ChemCraft
             Console.WriteLine(say);
 
             // Show hand
+            say = "";
             say = field.player[1].Hand[0].elementSymbol;
             for (int i = 1; i < field.player[1].Hand.Count; i++)
             {

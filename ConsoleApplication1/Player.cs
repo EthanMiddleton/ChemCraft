@@ -38,7 +38,7 @@ namespace ChemCraft
         //draw cards until the plaer hand has 6 cards
         public void DrawCards()
         {
-            while (hand.Count < 8)
+            while (hand.Count < 6)
                hand.Add(Draw());
             //for (int i = 0; i < hand.Count; i++)
             //{
@@ -62,7 +62,7 @@ namespace ChemCraft
             //loops until card is found that hasn't bee picked
             while (check == false)
             {
-                int rand = rnd.Next(52);
+                int rand = rnd.Next(deck.List.Count);
                 if (Deck.List[rand].state == 1)
                 {
                     Deck.List[rand].state = 2;
