@@ -44,6 +44,7 @@ namespace ChemCraft
             updateElements();
             updateExistComp();
             updateNewComp();
+            TextBoxEnergy.Text = energy.ToString();
         }
 
         private void updateElements()
@@ -139,57 +140,68 @@ namespace ChemCraft
         //create
         private void button1_Click(object sender, EventArgs e)
         {
-            Element tmpEle;
-            Compound newCompound = newCompounds[comboBoxNewComp.SelectedIndex];
-            //add the compound to the array
-            compounds.Add(newCompound);
-
-            //for each element required in the compound
-            for (int i = 0; i < newCompound.elements.Length; i++)
+            if (comboBoxNewComp.SelectedIndex != -1)
             {
-                tmpEle = deck.List[newCompound.IDs[i]];
+                Element tmpEle;
+                Compound newCompound = newCompounds[comboBoxNewComp.SelectedIndex];
+                //add the compound to the array
+                compounds.Add(newCompound);
 
-                //remove the elements
-                tmpEle.state = 4;
-                hand.Remove(tmpEle);
-                elements[tmpEle.atomicNumber - 1].Remove(tmpEle);
+                //for each element required in the compound
+                for (int i = 0; i < newCompound.elements.Length; i++)
+                {
+                    tmpEle = deck.List[newCompound.IDs[i]];
+
+                    //remove the elements
+                    tmpEle.state = 4;
+                    hand.Remove(tmpEle);
+                    elements[tmpEle.atomicNumber - 1].Remove(tmpEle);
+                }
+                //remove the compound from the array
+                newCompounds.RemoveAt(comboBoxNewComp.SelectedIndex);
+
+                //update
+                updateExistComp();
+                updateElements();
+                updateNewComp();
+                comboBoxNewComp.Text = "";
+                TextBoxNewComp.Text = "";
             }
-            //remove the compound from the array
-            newCompounds.RemoveAt(comboBoxNewComp.SelectedIndex);
-
-            //update
-            updateExistComp();
-            updateElements();
-            updateNewComp();
         }
 
         //destroy
         private void button2_Click(object sender, EventArgs e)
         {
-            //tmp variables
-            Element tmpEle;
-            Compound tmpComp = compounds[comboBoxComp.SelectedIndex];
-
-            //if you have enough energy to spend
-            if (tmpComp.elements.Length >= energy)
+            if (comboBoxComp.SelectedIndex != -1)
             {
-                energy -= tmpComp.elements.Length;
-                //for each element inside the compound
-                for (int i = 0; i < tmpComp.elements.Length; i++)
+                //tmp variables
+                Element tmpEle;
+                Compound tmpComp = compounds[comboBoxComp.SelectedIndex];
+
+                //if you have enough energy to spend
+                if (tmpComp.elements.Length <= energy)
                 {
-                    //add the element to the hand
-                    tmpEle = deck.List[tmpComp.IDs[i]];
-                    hand.Add(tmpEle);
-                    tmpEle.state = 2;
+                    energy -= tmpComp.elements.Length;
+                    //for each element inside the compound
+                    for (int i = 0; i < tmpComp.elements.Length; i++)
+                    {
+                        //add the element to the hand
+                        tmpEle = deck.List[tmpComp.IDs[i]];
+                        hand.Add(tmpEle);
+                        tmpEle.state = 2;
+                    }
+
+                    //remove the compound from the array
+                    compounds.RemoveAt(comboBoxComp.SelectedIndex);
+
+                    //update
+                    updateElements();
+                    updateExistComp();
+                    updateNewComp();
+                    comboBoxComp.Text = "";
+                    TextBoxComp.Text = "";
+                    TextBoxEnergy.Text = energy.ToString();
                 }
-
-                //remove the compound from the array
-                compounds.RemoveAt(comboBoxComp.SelectedIndex);
-
-                //update
-                updateElements();
-                updateExistComp();
-                updateNewComp();
             }
         }
 
@@ -205,17 +217,19 @@ namespace ChemCraft
             TextBoxComp.Text = compounds[comboBoxComp.SelectedIndex].formula;
         }
 
-        //Close the crucible and update the player
-        private void buttonFinish_Click(object sender, EventArgs e)
+        private void finish()
         {
-
             player.Hand = hand;
             player.Compounds = compounds;
             player.Energy = energy;
             player.Deck = deck;
 
             Field.craftingDone();
-            this.Close();
+            //this.Close();
+        }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            finish();
         }
     }
 }
