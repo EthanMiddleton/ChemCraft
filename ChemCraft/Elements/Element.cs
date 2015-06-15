@@ -406,5 +406,5 @@ namespace ChemCraft
             ion = ionType.CATION;
         }
         public override bool isDiatomic() { return false; }
-    }*/
+    }*///
 }
