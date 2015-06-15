@@ -25,8 +25,8 @@ namespace ChemCraft
         {
             while (true)
             {
-                field.cycle();
                 ConsoleDraw();
+                field.cycle();
             }
         }
 
