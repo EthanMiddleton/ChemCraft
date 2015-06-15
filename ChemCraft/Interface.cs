@@ -72,29 +72,38 @@ namespace ChemCraft
             
             //HOTKEYS (Select any of the six elements in the player's hand).
 
-            if(keyState.IsKeyDown(Keys.D1))
-            {
-            }
-
-            else if(keyState.IsKeyDown(Keys.D2))
-            {      
-            }
-
-            else if(keyState.IsKeyDown(Keys.D3))
-            {     
-            }
-
-            else if(keyState.IsKeyDown(Keys.D4))
-            {
-            }
-
-            else if(keyState.IsKeyDown(Keys.D5))
-            {
-            }
-
-            else if(keyState.IsKeyDown(Keys.D6))
-            {
-            }
+            if (keyState.IsKeyDown(Keys.D1) && uiPElement(0) != null)
+                selectElement(0);
+            else if (keyState.IsKeyDown(Keys.D2) && uiPElement(1) != null)
+                selectElement(1);
+            else if (keyState.IsKeyDown(Keys.D3) && uiPElement(2) != null)
+                selectElement(2);
+            else if (keyState.IsKeyDown(Keys.D4) && uiPElement(3) != null)
+                selectElement(3);
+            else if (keyState.IsKeyDown(Keys.D5) && uiPElement(4) != null)
+                selectElement(4);
+            else if (keyState.IsKeyDown(Keys.D6) && uiPElement(5) != null)
+                selectElement(5);
+            else if (keyState.IsKeyDown(Keys.NumPad0) && uiPCompound(0) != null)
+                selectCompound(0);
+            else if (keyState.IsKeyDown(Keys.NumPad1) && uiPCompound(1) != null)
+                selectCompound(1);
+            else if (keyState.IsKeyDown(Keys.NumPad2) && uiPCompound(2) != null)
+                selectCompound(2);
+            else if (keyState.IsKeyDown(Keys.NumPad3) && uiPCompound(3) != null)
+                selectCompound(3);
+            else if (keyState.IsKeyDown(Keys.NumPad4) && uiPCompound(4) != null)
+                selectCompound(4);
+            else if (keyState.IsKeyDown(Keys.NumPad5) && uiPCompound(5) != null)
+                selectCompound(5);
+            else if (keyState.IsKeyDown(Keys.NumPad6) && uiPCompound(6) != null)
+                selectCompound(6);
+            else if (keyState.IsKeyDown(Keys.NumPad7) && uiPCompound(7) != null)
+                selectCompound(7);
+            else if (keyState.IsKeyDown(Keys.NumPad8) && uiPCompound(8) != null)
+                selectCompound(8);
+            else if (keyState.IsKeyDown(Keys.NumPad9) && uiPCompound(9) != null)
+                selectCompound(9);
         }
 
         //To display each Player's Elements
@@ -127,12 +136,14 @@ namespace ChemCraft
 
         }
 
-        public void selectElement()
+        public void selectElement(int elementInHand)
         {
+         //Select the desired element in the player's hand.
         }
 
-        public void selectCompound()
+        public void selectCompound(int compoundInHand)
         {
+         //Select the desired compound in the player's hand.
         }
 
         public Rectangle GetBounds()
