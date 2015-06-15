@@ -14,7 +14,6 @@ namespace ChemCraft
     public partial class Crucible : Form
     {
         private List<List<Element>> elements;
-        private List<List<Element>> compElements;
         private Player player;
         private List<Element> hand;
         private Deck deck;
@@ -36,12 +35,8 @@ namespace ChemCraft
             newCompounds = new List<Compound>();
 
             elements = new List<List<Element>>();
-            compElements = new List<List<Element>>();
             for (int i = 0; i < 20; i++)
-            {
                 elements.Add(new List<Element>());
-                compElements.Add(new List<Element>());
-            }
 
             InitializeComponent();
 
@@ -58,9 +53,7 @@ namespace ChemCraft
 
             elements = new List<List<Element>>();
             for (int i = 0; i < 118; i++)
-            {
                 elements.Add(new List<Element>());
-            }
 
             for (int i = 0; i < hand.Count; i++)
             {
@@ -138,30 +131,28 @@ namespace ChemCraft
         {
             comboBoxComp.Items.Clear();
             //for each compound
-                for (int i = 0; i < compounds.Count; i++)
-                {
-                    //add the compound to the menu
-                    comboBoxComp.Items.Add(compounds[i].name);
-            }
+            for (int i = 0; i < compounds.Count; i++)
+                //add the compound to the menu
+                comboBoxComp.Items.Add(compounds[i].name);
         }
 
         //create
         private void button1_Click(object sender, EventArgs e)
         {
+            Element tmpEle;
+            Compound newCompound = newCompounds[comboBoxNewComp.SelectedIndex];
             //add the compound to the array
-            compounds.Add(newCompounds[comboBoxNewComp.SelectedIndex]);
+            compounds.Add(newCompound);
 
             //for each element required in the compound
-            int[] tmpFormula = newCompounds[newCompounds.Count - 1].elements;
-            for (int i = 0; i < tmpFormula.Length; i++)
+            for (int i = 0; i < newCompound.elements.Length; i++)
             {
-                
-                
+                tmpEle = deck.List[newCompound.IDs[i]];
+
                 //remove the elements
-                deck.List[elements[tmpFormula[i] - 1][0].ID].state = 4;
-                hand.Remove(elements[tmpFormula[i] - 1][0]);
-                compElements[tmpFormula[i] - 1].Add(elements[tmpFormula[i] - 1][0]);
-                elements[tmpFormula[i] - 1].RemoveAt(0);
+                tmpEle.state = 4;
+                hand.Remove(tmpEle);
+                elements[tmpEle.atomicNumber - 1].Remove(tmpEle);
             }
             //remove the compound from the array
             newCompounds.RemoveAt(comboBoxNewComp.SelectedIndex);
@@ -171,24 +162,25 @@ namespace ChemCraft
             updateElements();
             updateNewComp();
         }
+
         //destroy
         private void button2_Click(object sender, EventArgs e)
         {
             //tmp variables
-            int[] tmpComp = compounds[comboBoxComp.SelectedIndex].elements;
-            List<List<Element>> tempEle = compElements;
+            Element tmpEle;
+            Compound tmpComp = compounds[comboBoxComp.SelectedIndex];
 
-            //for each element inside the compound
-            if (tmpComp.Length >= energy)
+            //if you have enough energy to spend
+            if (tmpComp.elements.Length >= energy)
             {
-                for (int i = 0; i < tmpComp.Length; i++)
+                energy -= tmpComp.elements.Length;
+                //for each element inside the compound
+                for (int i = 0; i < tmpComp.elements.Length; i++)
                 {
                     //add the element to the hand
-                    hand.Add(tempEle[tmpComp[i]-1][0]);
-                    deck.List[hand[hand.Count-1].ID].state = 2;
-                    tempEle[tmpComp[i]-1].RemoveAt(0);
-                    //take away energy
-                    energy--;
+                    tmpEle = deck.List[tmpComp.IDs[i]];
+                    hand.Add(tmpEle);
+                    tmpEle.state = 2;
                 }
 
                 //remove the compound from the array
