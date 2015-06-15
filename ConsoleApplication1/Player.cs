@@ -16,8 +16,6 @@ namespace ChemCraft
         private List<Compound> compounds;
         //the player's deck
         private Deck deck;
-        //the crucible where elements will combine
-        private Crucible crucible;
         //how much energy the player has
         private int energy;
         private int health;
@@ -74,11 +72,12 @@ namespace ChemCraft
         }
 
         //method to determine amount of income
-        public void income(int active) // how energy is gained from the compounds made
+        public void income() // how energy is gained from the compounds made
         {
+            energy = 0;
             for (int i = 0; i < compounds.Count; i++)
             {
-               energy += compounds[i].elements.Length;
+               energy += compounds[i].elementnum;
             }
         }
 
