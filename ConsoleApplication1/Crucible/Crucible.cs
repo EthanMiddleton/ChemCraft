@@ -108,22 +108,15 @@ namespace ChemCraft
         private Compound createCompound(Compound newCompound)
         {
             int[] myIDs = new int[newCompound.elements.Length];
-            int j =  0;
+
             for (int i = 0; i < myIDs.Length; i++)
             {
-                myIDs[i] = elements[newCompound.elements[i] - 1][j].ID;
-                try
-                {
-                    if(newCompound.elements[i] != newCompound.elements[i + 1])
-                    {
-                        j = 0;
-                    }
-                }catch(Exception e)
-                {
-
-                }
+                myIDs[i] = elements[newCompound.elements[i] - 1][0].ID;
+                elements[newCompound.elements[i] - 1].RemoveAt(0);
             }
             newCompound.IDs = myIDs;
+
+            updateElements();
 
             return newCompound;
         }
