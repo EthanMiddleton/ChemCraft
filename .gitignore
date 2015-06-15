@@ -198,3 +198,5 @@ ConsoleApplication1/bin/Debug/ConsoleApplication1.exe
 ConsoleApplication1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.cache
 *.pdb
+ConsoleApplication1/bin/Debug/ConsoleApplication1.exe
+*.pdb
