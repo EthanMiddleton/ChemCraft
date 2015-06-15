@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +26,7 @@ namespace ChemCraft
         //MouseState mouse;
         int selected;
         string selectedString;
+        Boolean go;
 
         // Variables for attack/defend
         enum compType { Acid = 1, Base }
@@ -88,17 +89,16 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         public void turn()
         {
-           // if (turnPos != TurnPos.crafting)
+            if (turnPos != TurnPos.crafting)
             {
                 if (turnPos == TurnPos.other)
                 {
                     active = turnCount % 2;
-                    player[active].income(active);
+                    player[active].income();
                 }
                 selectCard<Element>(player[active].Compounds, active);
                 if (turnPos == TurnPos.other)
                 {
-                    attack(active);
                     turnPos = TurnPos.crafting;
                     player[active].useCrucible();
                     player[active].DrawCards();
@@ -118,21 +118,21 @@ namespace ChemCraft
             {
                 player[active].Energy -= 2 * player[active].Compounds[selected].elementnum;
                 // Test if the opponent has a shield for the current attack
-                for (int i = 0; i < otherPlayer.Defense.Count; i++)
+                for (int i = 0; i < player[otherPlayer].Defense.Count; i++)
                 {
-                    if (otherPlayer.Compounds[i].type.Equals(Compound.Type.Acid) && player[active].Compounds[selected].type.Equals(Compound.Type.Base))
+                    if (player[otherPlayer].Compounds[i].type.Equals(Compound.Type.Acid) && player[active].Compounds[selected].type.Equals(Compound.Type.Base))
                     {
                         player[active].removeCompound(selected);
                         return;
                     }
-                    if (otherPlayer.Compounds[i].type.Equals(Compound.Type.Base) && player[active].Compounds[selected].type.Equals(Compound.Type.Acid))
+                    if (player[otherPlayer].Compounds[i].type.Equals(Compound.Type.Base) && player[active].Compounds[selected].type.Equals(Compound.Type.Acid))
                     {
                         player[active].removeCompound(selected);
                         return;
                     }
                 }
+                player[otherPlayer].Health -= player[active].Compounds[selected].damage;
                 player[active].removeCompound(selected);
-                otherPlayer.Health -= player[active].Compounds[selected].damage;
             }
         }
 
@@ -141,10 +141,10 @@ namespace ChemCraft
         /// Play a defense
         /// </summary>
         /// <param name="active">The active player</param>
-        private void defend()
+        private void defend(int selected)
         {
-            player[active].Compounds.Add(player[active].Compounds[selected]);
-            player[active].removeCompound(selected);
+            player[active].Defense.Add(player[active].Compounds[selected]);
+            player[active].Compounds.RemoveAt(selected);
         }
 
         /// <summary>
@@ -156,6 +156,7 @@ namespace ChemCraft
         private void selectCard<Element>(List<Compound> activeHand, int cPlayer)
         {
             turnPos = TurnPos.attackActive;
+            selectedString = " ";
             //mouse = Mouse.GetState();
             //if (mouse.MiddleButton == ButtonState.Pressed)
             //{
@@ -178,14 +179,33 @@ namespace ChemCraft
             //        }
             //    }
             //}
-            selectedString = Console.ReadLine();
-            for (int i = 0; i < player[cPlayer].Compounds.Count; i++)
+            while (selectedString != "")
             {
-                if (selectedString == Convert.ToString(i))
+                selectedString = Console.ReadLine();
+                for (int i = 0; i < player[cPlayer].Compounds.Count; i++)
                 {
-                    selected = Convert.ToInt16(selectedString);
-                    attack(cPlayer);
+                    try
+                    {
+                        selected = Convert.ToInt16(selectedString);
+                        go = true;
+                    }
+                    catch (Exception)
+                    {
+                        go = false;
+                    }
+                    if (go)
+                    {
+                        if (selected == i + 1 && player[cPlayer].Compounds[i].elementnum * 2 <= player[cPlayer].Energy)
+                        {
+                            attack(cPlayer);
+                        }
+                        else if (selected == -(i + 1) && player[cPlayer].Compounds[i].elementnum * 2 <= player[cPlayer].Energy)
+                        {
+                            defend(-selected);
+                        }
+                    }
                 }
+                ConsoleDraw();
             }
             turnPos = TurnPos.other;
         }
@@ -193,15 +213,15 @@ namespace ChemCraft
         /// <summary>
         /// Easy access to the inactive player
         /// </summary>
-        Player otherPlayer
+        int otherPlayer
         {
             get
             {
                 if (active == 1)
                 {
-                    return player[0];
+                    return 0;
                 }
-                return player[1];
+                return 1;
             }
         }
 
@@ -221,14 +241,14 @@ namespace ChemCraft
         /// </summary>
         public static void craftingDone()
         {
-            turnPos = TurnPos.crafting;
+            turnPos = TurnPos.other;
         }
 
 
-        private void consoleDraw()
+        private void ConsoleDraw()
         {
 
-            Console.SetWindowSize(100, 11);
+            Console.SetWindowSize(100, 12);
             // Show health and energy
             say = "Health: " + player[0].Health + "         Energy: " + player[0].Energy;
             Console.WriteLine(say);
@@ -242,18 +262,26 @@ namespace ChemCraft
             Console.WriteLine(say);
 
             // Show Compounds
-            say = player[0].Compounds[0].GetName;
-            for (int i = 1; i < player[0].Compounds.Count; i++)
+            say = "";
+            if (player[0].Compounds.Count > 0)
             {
-                say += ", " + player[0].Compounds[i].GetName;
+                say = player[0].Compounds[0].GetName;
+                for (int i = 1; i < player[0].Compounds.Count; i++)
+                {
+                    say += ", " + player[0].Compounds[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
             // Show defenses
-            say = player[0].Defense[0].GetName;
-            for (int i = 1; i < player[0].Defense.Count; i++)
+            say = "";
+            if (player[0].Defense.Count > 0)
             {
-                say += ", " + player[0].Defense[i].GetName;
+                say = player[0].Defense[0].GetName;
+                for (int i = 1; i < player[0].Defense.Count; i++)
+                {
+                    say += ", " + player[0].Defense[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
@@ -263,22 +291,31 @@ namespace ChemCraft
             Console.WriteLine("Player 2");
 
             // Show defenses
-            say = player[1].Defense[0].GetName;
-            for (int i = 1; i < player[1].Defense.Count; i++)
+            say = "";
+            if (player[1].Defense.Count > 0)
             {
-                say += ", " + player[1].Defense[i].GetName;
+                say = player[1].Defense[0].GetName;
+                for (int i = 1; i < player[1].Defense.Count; i++)
+                {
+                    say += ", " + player[1].Defense[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
             // Show Compounds
-            say = player[1].Compounds[0].GetName;
-            for (int i = 1; i < player[1].Compounds.Count; i++)
+            say = "";
+            if (player[1].Compounds.Count > 0)
             {
-                say += ", " + player[1].Compounds[i].GetName;
+                say = player[1].Compounds[0].GetName;
+                for (int i = 1; i < player[1].Compounds.Count; i++)
+                {
+                    say += ", " + player[1].Compounds[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
             // Show hand
+            say = "";
             say = player[1].Hand[0].elementSymbol;
             for (int i = 1; i < player[1].Hand.Count; i++)
             {
@@ -289,7 +326,6 @@ namespace ChemCraft
             // Show health and energy
             say = "Health: " + player[1].Health + "         Energy: " + player[1].Energy;
             Console.WriteLine(say);
-
         }
     }
 }
