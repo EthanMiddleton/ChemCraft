@@ -105,7 +105,7 @@ namespace ChemCraft
                     turnCount++;
                 }
             }
-            //consoleDraw();
+            ConsoleDraw();
         }
 
         /// <summary>
@@ -143,6 +143,7 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         private void defend(int selected)
         {
+
             player[active].Defense.Add(player[active].Compounds[selected]);
             player[active].Compounds.RemoveAt(selected);
         }

@@ -50,10 +50,14 @@
     <Compile Include="Compounds\Bleach.cs" />
     <Compile Include="Compounds\Caustic-Soda.cs" />
     <Compile Include="Compounds\Compound.cs" />
+    <Compile Include="Compounds\Fluorine Gas.cs" />
+    <Compile Include="Compounds\Hydrogen Gas.cs" />
     <Compile Include="Compounds\Hydrogen-Peroxide.cs" />
     <Compile Include="Compounds\Laughing-Gas.cs" />
     <Compile Include="Compounds\Marble.cs" />
     <Compile Include="Compounds\Muriatic-Acid.cs" />
+    <Compile Include="Compounds\Nitrogen Gas.cs" />
+    <Compile Include="Compounds\Oxygen Gas.cs" />
     <Compile Include="Compounds\Potassium-Hyrdoxide.cs" />
     <Compile Include="Compounds\Quartz.cs" />
     <Compile Include="Compounds\Rubbing-Alcohol.cs" />

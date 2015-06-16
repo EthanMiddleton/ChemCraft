@@ -21,6 +21,8 @@ namespace ChemCraft
         private int health;
         //shield array list
         private List <Compound> shield;
+        //random card that is selected
+        static Random rnd = new Random();
 
         //player constructor
         public Player()
@@ -55,8 +57,7 @@ namespace ChemCraft
         {
             //boolean that ensures you find a card that hasn't been found
             Boolean check = false;
-            //random card that is selected
-            Random rnd = new Random();
+            
             //loops until card is found that hasn't bee picked
             while (check == false)
             {
