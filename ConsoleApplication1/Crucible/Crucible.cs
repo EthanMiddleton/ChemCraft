@@ -133,7 +133,7 @@ namespace ChemCraft
         //create
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBoxNewComp.SelectedIndex != -1)
+            if (comboBoxNewComp.SelectedIndex != -1 && compounds.Count <= 10)
             {
                 Element tmpEle;
                 Compound newCompound = newCompounds[comboBoxNewComp.SelectedIndex];
