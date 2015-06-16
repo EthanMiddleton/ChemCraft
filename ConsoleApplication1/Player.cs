@@ -69,7 +69,7 @@ namespace ChemCraft
                 }
                 else
                 {
-                    rand = rnd.Next(80);
+                        rand = rnd.Next(80);
                 }
                 if (Deck.List[rand].state == 1)
                 {

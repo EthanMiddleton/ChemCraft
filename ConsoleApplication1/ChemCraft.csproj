@@ -49,6 +49,8 @@
     <Compile Include="Card.cs" />
     <Compile Include="Compounds\Baking-Soda.cs" />
     <Compile Include="Compounds\Bleach.cs" />
+    <Compile Include="Compounds\Calcium Hydroxide.cs" />
+    <Compile Include="Compounds\Carbon Dioxide.cs" />
     <Compile Include="Compounds\Caustic-Soda.cs" />
     <Compile Include="Compounds\Compound.cs" />
     <Compile Include="Compounds\Fluorine Gas.cs" />
@@ -56,9 +58,11 @@
     <Compile Include="Compounds\Hydrogen-Peroxide.cs" />
     <Compile Include="Compounds\Laughing-Gas.cs" />
     <Compile Include="Compounds\Marble.cs" />
+    <Compile Include="Compounds\Methane.cs" />
     <Compile Include="Compounds\Muriatic-Acid.cs" />
     <Compile Include="Compounds\Nitrogen Gas.cs" />
     <Compile Include="Compounds\Oxygen Gas.cs" />
+    <Compile Include="Compounds\Ozone.cs" />
     <Compile Include="Compounds\Potassium-Hyrdoxide.cs" />
     <Compile Include="Compounds\Quartz.cs" />
     <Compile Include="Compounds\Rubbing-Alcohol.cs" />
