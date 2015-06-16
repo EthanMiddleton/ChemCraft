@@ -23,6 +23,7 @@ namespace ChemCraft
         const int cardWidth = 474, cardHeight = 686; 
         public string description; 
 
+        //ArrayLists for elements and compounds in the player's hand.
         List<Element> uiPElement, uiPSElement;
         List<Compound> uiPCompound, uiPSCompound;
 
@@ -39,15 +40,7 @@ namespace ChemCraft
         {
             this.texture = texture;
             this.scrnbound = scrnbound;
-            //SetInStartPosition();
         }
-
-       /* public void SetInStartPosition()
-        {
-            position.X = (scrnBound.Width - texture.Width) / 2;
-            position.Y = (scrnBound.Height - texture.Height) - 5;
-        }*/
-
 
         public void Draw (SpriteBatch spriteBatch, Texture2D texture) 
         {
@@ -59,10 +52,14 @@ namespace ChemCraft
             mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed) //LM Button pressed? Select the card under the cursor then.
             {
+             //Run a for loop to check if the mouse's coordinates overlap the coordinates of an element card in the player's hand.
+             //If so, select it. Same applies for compounds.
             }
 
             if (mouseState.RightButton == ButtonState.Pressed) //RM Button pressed? Display the description of the card under the cursor then?
-            {           
+            {
+             //Run a for loop to check if the mouse's coordinates overlap the coordinates of an element card in the player's hand.
+             //If so, show its description. Same applies for compounds.
             }
         }
 
@@ -145,11 +142,6 @@ namespace ChemCraft
         public void selectCompound(int compoundInHand)
         {
             uiPSCompound.add(uiPCompound(compoundInHand));
-        }
-a
-        public Rectangle GetBounds()
-        {
-           return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
         }
     }
 }
