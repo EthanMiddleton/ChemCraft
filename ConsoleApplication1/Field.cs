@@ -19,6 +19,7 @@ namespace ChemCraft
 
         // Turn taking variables
         enum TurnPos { attackActive, other, crafting };
+        static int turnPosB;
         static TurnPos turnPos;
         int active, turnCount;
 
@@ -89,21 +90,47 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         public void turn()
         {
-            if (turnPos != TurnPos.crafting)
+            //if (turnPos != TurnPos.crafting)
+            //{
+            //    if (turnPos == TurnPos.other)
+            //    {
+            //        active = turnCount % 2;
+            //        player[active].income();
+            //    }
+            //    selectCard<Element>(player[active].Compounds, active);
+            //    if (turnPos == TurnPos.other)
+            //    {
+            //        turnPos = TurnPos.crafting;
+            //        player[active].useCrucible();
+            //        player[active].DrawCards();
+            //        turnCount++;
+            //    }
+            //}
+            if (turnPosB == 1)
             {
-                if (turnPos == TurnPos.other)
-                {
-                    active = turnCount % 2;
-                    player[active].income();
-                }
-                selectCard<Element>(player[active].Compounds, active);
-                if (turnPos == TurnPos.other)
-                {
-                    turnPos = TurnPos.crafting;
-                    player[active].useCrucible();
-                    player[active].DrawCards();
-                    turnCount++;
-                }
+                active = turnCount % 2;
+                turnPosB++;
+            }
+            if (turnPosB == 2)
+            {
+                player[active].income();
+                turnPosB++;
+            }
+            if (turnPosB == 3)
+            {
+                turnPos = TurnPos.crafting;
+                turnPosB++;
+            }
+            if (turnPosB == 4)
+            {
+                turnPosB = 0;
+                player[active].useCrucible();
+            }
+            if (turnPosB == 5)
+            {
+                player[active].DrawCards(turnCount/2 - turnCount%2);
+                turnCount++;
+                turnPosB = 1;
             }
             ConsoleDraw();
         }
@@ -242,7 +269,7 @@ namespace ChemCraft
         /// </summary>
         public static void craftingDone()
         {
-            turnPos = TurnPos.other;
+            turnPosB = 5;
         }
 
 

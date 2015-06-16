@@ -23,6 +23,8 @@ namespace ChemCraft
         private List <Compound> shield;
         //random card that is selected
         static Random rnd = new Random();
+        // Random int
+        int rand;
 
         //player constructor
         public Player()
@@ -33,13 +35,13 @@ namespace ChemCraft
             shield = new List<Compound>();
             energy = 0;
             health = 10;
-            DrawCards();
+            DrawCards(0);
         }
         //draw cards until the plaer hand has 6 cards
-        public void DrawCards()
+        public void DrawCards(int turnCount)
         {
             while (hand.Count < 6)
-               hand.Add(Draw());
+               hand.Add(Draw(turnCount));
             //for (int i = 0; i < hand.Count; i++)
             //{
             //    hand.RemoveAt(0);
@@ -53,7 +55,7 @@ namespace ChemCraft
         }
 
         //draws a single card from the deck that hasn't previously been drawn
-        private Element Draw()
+        private Element Draw(int turnCount)
         {
             //boolean that ensures you find a card that hasn't been found
             Boolean check = false;
@@ -61,7 +63,14 @@ namespace ChemCraft
             //loops until card is found that hasn't bee picked
             while (check == false)
             {
-                int rand = rnd.Next(deck.List.Count);
+                if (turnCount < 5)
+                {
+                    rand = rnd.Next(60+4*turnCount);
+                }
+                else
+                {
+                    rand = rnd.Next(80);
+                }
                 if (Deck.List[rand].state == 1)
                 {
                     Deck.List[rand].state = 2;
