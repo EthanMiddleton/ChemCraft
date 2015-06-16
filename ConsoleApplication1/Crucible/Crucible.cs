@@ -96,6 +96,14 @@ namespace ChemCraft
                 newCompounds.Add(createCompound(new H2O2()));
             if (elements[19 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
                 newCompounds.Add(createCompound(new KOH()));
+            if (elements[1 - 1].Count >= 2)
+                newCompounds.Add(createCompound(new H2()));
+            if (elements[7 - 1].Count >= 2)
+                newCompounds.Add(createCompound(new N2()));
+            if (elements[8 - 1].Count >= 2)
+                newCompounds.Add(createCompound(new O2()));
+            if (elements[9 - 1].Count >= 2)
+                newCompounds.Add(createCompound(new F2()));
 
             comboBoxNewComp.Items.Clear();
             for (int i = 0; i < newCompounds.Count; i++)
