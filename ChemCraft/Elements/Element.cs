@@ -245,7 +245,7 @@ namespace ChemCraft
         }
         public override bool isDiatomic() { return false; }
     }
-    /*
+    
     public class Sodium : Metal
     {
         public Sodium()
@@ -406,5 +406,5 @@ namespace ChemCraft
             ion = ionType.CATION;
         }
         public override bool isDiatomic() { return false; }
-    }*///
+    }
 }
