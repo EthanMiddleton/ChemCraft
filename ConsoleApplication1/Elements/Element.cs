@@ -1,14 +1,14 @@
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-    namespace ChemCraft
-    {
+namespace ChemCraft
+{
     public abstract class Element : Card
     {
-        public enum elementStates {SOLID, LIQUID, GAS, AQUEOUS};
-        public enum ionType {ANION, CATION, NOT};
+        public enum elementStates { SOLID, LIQUID, GAS, AQUEOUS };
+        public enum ionType { ANION, CATION, NOT };
 
         /* public abstract Element transmute();
         public abstract void attack();
@@ -29,13 +29,13 @@
         public String elementSymbol
         {
             protected set { ElementSymbol = value; }
-            get { return ElementSymbol;  }
+            get { return ElementSymbol; }
         }
 
         public String elementName
         {
             protected set { ElementName = value; }
-            get { return ElementName;   }
+            get { return ElementName; }
         }
 
         public int atomicNumber
@@ -47,13 +47,13 @@
         public int valenceElectrons
         {
             protected set { ValenceElectrons = value; }
-            get { return ValenceElectrons;  }
+            get { return ValenceElectrons; }
         }
 
         public int valenceShell
         {
             protected set { ValenceShell = value; }
-            get { return ValenceShell;  }
+            get { return ValenceShell; }
         }
 
         public int state
@@ -73,6 +73,7 @@
     public abstract class Metal : Element
     {
         public abstract void reactWithNonMetal();
+
     }
 
     public abstract class NonMetal : Element
@@ -245,4 +246,186 @@
         }
         public override bool isDiatomic() { return false; }
     }
+
+
+    public class Sodium : Metal
+    {
+        public Sodium()
+        {
+            elementSymbol = "Na";
+            elementName = "Sodium";
+            atomicNumber = 11;
+            valenceElectrons = 1;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.CATION;
+        }
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+        public bool isDiatomic() { return true; }
     }
+
+    public class Magnesium : Metal
+    {
+        public Magnesium()
+        {
+            elementSymbol = "Mg";
+            elementName = "Magnesium";
+            atomicNumber = 12;
+            valenceElectrons = 2;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.CATION;
+        }
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+        public bool isDiatomic() { return false; }
+    }
+
+    public class Aluminum : Metal
+    {
+        public Aluminum()
+        {
+            elementSymbol = "Al";
+            elementName = "Aluminum";
+            atomicNumber = 13;
+            valenceElectrons = 3;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.CATION;
+        }
+
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Silicon : Metalloid
+    {
+        public Silicon()
+        {
+            elementSymbol = "Si";
+            elementName = "Silicon";
+            atomicNumber = 14;
+            valenceElectrons = 4;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.NOT;
+        }
+
+        public void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Phosphorus : NonMetal
+    {
+        public Phosphorus()
+        {
+            elementSymbol = "P";
+            elementName = "Phosphorus";
+            atomicNumber = 15;
+            valenceElectrons = 5;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.ANION;
+        }
+        public override bool isDiatomic()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class Sulphur : NonMetal
+    {
+        public Sulphur()
+        {
+            elementSymbol = "S";
+            elementName = "Sulphur";
+            atomicNumber = 16;
+            valenceElectrons = 6;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.ANION;
+        }
+        public override bool isDiatomic() { return false; }
+    }
+
+    public class Chlorine : NonMetal
+    {
+        public Chlorine()
+        {
+            elementSymbol = "Cl";
+            elementName = "Chlorine";
+            atomicNumber = 17;
+            valenceElectrons = 7;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.ANION;
+        }
+
+        public override bool isDiatomic() { return true; }
+    }
+
+    public class Argon : NonMetal
+    {
+        public Argon()
+        {
+            elementSymbol = "Ar";
+            elementName = "Argon";
+            atomicNumber = 18;
+            valenceElectrons = 8;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.NOT;
+        }
+
+        public override bool isDiatomic() { return true; }
+    }
+
+    public class Potassium : Metal
+    {
+        public Potassium()
+        {
+            elementSymbol = "K";
+            elementName = "Potassium";
+            atomicNumber = 19;
+            valenceElectrons = 1;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.CATION;
+        }
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+        public bool isDiatomic() { return true; }
+    }
+
+    public class Calcium : Metal
+    {
+        public Calcium()
+        {
+            elementSymbol = "Ca";
+            elementName = "Calcium";
+            atomicNumber = 20;
+            valenceElectrons = 2;
+            valenceShell = 8;
+            state = 1;
+            ion = ionType.CATION;
+        }
+
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool isDiatomic() { return false; }
+    }
+}
