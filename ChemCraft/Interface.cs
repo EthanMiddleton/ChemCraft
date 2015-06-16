@@ -106,15 +106,16 @@ namespace ChemCraft
                 selectCompound(9);
         }
 
-        //To display each Player's Elements
+        //To display each Player's Elements on the GUI.
         public void displayPElements()
         {
          for(int e = 0; e < uiPELement.Count; e++)
          {
+          
          }
         }
 
-        //To display each Player's Compounds
+        //To display each Player's Compounds on the GUI.
         public void displayPCompounds()
         {
          for(int c = 0; c < uiPCompound.Count; c++)
@@ -145,14 +146,10 @@ namespace ChemCraft
         {
             uiPSCompound.add(uiPCompound(compoundInHand));
         }
-
-        public void computeReaction()
-        {
-        }
-
+a
         public Rectangle GetBounds()
         {
-            return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+           return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
         }
     }
 }
