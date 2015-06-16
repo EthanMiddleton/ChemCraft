@@ -50,6 +50,7 @@ namespace ChemCraft
             this.label5 = new System.Windows.Forms.Label();
             this.TextBoxEnergy = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.buttonDiscard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCreate
@@ -176,11 +177,22 @@ namespace ChemCraft
             this.label6.TabIndex = 16;
             this.label6.Text = "Energy";
             // 
+            // buttonDiscard
+            // 
+            this.buttonDiscard.Location = new System.Drawing.Point(303, 144);
+            this.buttonDiscard.Name = "buttonDiscard";
+            this.buttonDiscard.Size = new System.Drawing.Size(75, 34);
+            this.buttonDiscard.TabIndex = 17;
+            this.buttonDiscard.Text = "Discard Hand";
+            this.buttonDiscard.UseVisualStyleBackColor = true;
+            this.buttonDiscard.Click += new System.EventHandler(this.buttonDiscard_Click);
+            // 
             // Crucible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(401, 249);
+            this.Controls.Add(this.buttonDiscard);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.TextBoxEnergy);
             this.Controls.Add(this.label5);
@@ -217,6 +229,7 @@ namespace ChemCraft
         private System.Windows.Forms.Label label5;
         private MaskedTextBox TextBoxEnergy;
         private Label label6;
+        private Button buttonDiscard;
     }
 }
 

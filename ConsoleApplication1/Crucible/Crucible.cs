@@ -19,7 +19,6 @@ namespace ChemCraft
         private Deck deck;
         private List<Compound> compounds;
         private List<Compound> newCompounds;
-
         private int energy;
 
         public Crucible(Player myPlayer)
@@ -135,6 +134,8 @@ namespace ChemCraft
         {
             if (comboBoxNewComp.SelectedIndex != -1 && compounds.Count <= 10)
             {
+                buttonDiscard.Enabled = false;
+
                 Element tmpEle;
                 Compound newCompound = newCompounds[comboBoxNewComp.SelectedIndex];
                 //add the compound to the array
@@ -167,6 +168,8 @@ namespace ChemCraft
         {
             if (comboBoxComp.SelectedIndex != -1)
             {
+                buttonDiscard.Enabled = false;
+
                 //tmp variables
                 Element tmpEle;
                 Compound tmpComp = compounds[comboBoxComp.SelectedIndex];
@@ -223,6 +226,14 @@ namespace ChemCraft
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             finish();
+        }
+
+        private void buttonDiscard_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < hand.Count; i++)
+                hand[i].state = 1;
+            hand.Clear();
+            Close();
         }
     }
 }
