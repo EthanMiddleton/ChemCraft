@@ -104,6 +104,12 @@ namespace ChemCraft
                 newCompounds.Add(createCompound(new O2()));
             if (elements[9 - 1].Count >= 2)
                 newCompounds.Add(createCompound(new F2()));
+            /*if (elements[19 - 1].Count >= 2)
+                newCompounds.Add(createCompound(new Cl2()));
+            if (elements[11 - 1].Count >= 2 && elements[1 - 1].Count >= 6)
+                newCompounds.Add(createCompound(new B2H6()));
+            if (elements[9 - 1].Count >= 1 && elements[1 - 1].Count >= 2 && elements[8 - 1].Count >= 2)
+                newCompounds.Add(createCompound(new BeOH2()));*/
 
             comboBoxNewComp.Items.Clear();
             for (int i = 0; i < newCompounds.Count; i++)
