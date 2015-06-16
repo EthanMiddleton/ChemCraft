@@ -138,12 +138,16 @@ namespace ChemCraft
 
         public void selectElement(int elementInHand)
         {
-         //Select the desired element in the player's hand.
+            uiPSElement.add(uiPElement(elementInHand));
         }
 
         public void selectCompound(int compoundInHand)
         {
-         //Select the desired compound in the player's hand.
+            uiPSCompound.add(uiPCompound(compoundInHand));
+        }
+
+        public void computeReaction()
+        {
         }
 
         public Rectangle GetBounds()
@@ -152,7 +156,3 @@ namespace ChemCraft
         }
     }
 }
-
-
-
-
