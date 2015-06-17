@@ -1,6 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ChemCraft;
+using System.Windows.Forms;
+
 namespace ChemCraft
 {
-    partial class Crucible
+    partial class Crucible : Form
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +48,9 @@ namespace ChemCraft
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxElements = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonFinish = new System.Windows.Forms.Button();
+            this.TextBoxEnergy = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonDiscard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCreate
@@ -106,7 +116,6 @@ namespace ChemCraft
             this.TextBoxNewComp.Name = "TextBoxNewComp";
             this.TextBoxNewComp.Size = new System.Drawing.Size(100, 20);
             this.TextBoxNewComp.TabIndex = 6;
-            this.TextBoxNewComp.Text = "ERROR";
             // 
             // TextBoxComp
             // 
@@ -115,7 +124,6 @@ namespace ChemCraft
             this.TextBoxComp.Name = "TextBoxComp";
             this.TextBoxComp.Size = new System.Drawing.Size(100, 20);
             this.TextBoxComp.TabIndex = 7;
-            this.TextBoxComp.Text = "ERROR";
             // 
             // label3
             // 
@@ -152,22 +160,41 @@ namespace ChemCraft
             this.label5.TabIndex = 12;
             this.label5.Text = "Your Elements";
             // 
-            // buttonFinish
+            // TextBoxEnergy
             // 
-            this.buttonFinish.Location = new System.Drawing.Point(171, 202);
-            this.buttonFinish.Name = "buttonFinish";
-            this.buttonFinish.Size = new System.Drawing.Size(75, 23);
-            this.buttonFinish.TabIndex = 14;
-            this.buttonFinish.Text = "Close";
-            this.buttonFinish.UseVisualStyleBackColor = true;
-            this.buttonFinish.Click += new System.EventHandler(this.buttonFinish_Click);
+            this.TextBoxEnergy.Enabled = false;
+            this.TextBoxEnergy.Location = new System.Drawing.Point(289, 118);
+            this.TextBoxEnergy.Name = "TextBoxEnergy";
+            this.TextBoxEnergy.Size = new System.Drawing.Size(100, 20);
+            this.TextBoxEnergy.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(321, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Energy";
+            // 
+            // buttonDiscard
+            // 
+            this.buttonDiscard.Location = new System.Drawing.Point(303, 144);
+            this.buttonDiscard.Name = "buttonDiscard";
+            this.buttonDiscard.Size = new System.Drawing.Size(75, 34);
+            this.buttonDiscard.TabIndex = 17;
+            this.buttonDiscard.Text = "Discard Hand";
+            this.buttonDiscard.UseVisualStyleBackColor = true;
+            this.buttonDiscard.Click += new System.EventHandler(this.buttonDiscard_Click);
             // 
             // Crucible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(401, 249);
-            this.Controls.Add(this.buttonFinish);
+            this.Controls.Add(this.buttonDiscard);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.TextBoxEnergy);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxElements);
             this.Controls.Add(this.label4);
@@ -200,7 +227,9 @@ namespace ChemCraft
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxElements;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button buttonFinish;
+        private MaskedTextBox TextBoxEnergy;
+        private Label label6;
+        private Button buttonDiscard;
     }
 }
 
