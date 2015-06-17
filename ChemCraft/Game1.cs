@@ -72,7 +72,6 @@ namespace ChemCraft
 
             // TODO: Add your update logic here
             field.cycle();
-            ConsoleDraw();
             base.Update(gameTime);
         }
 
@@ -87,73 +86,6 @@ namespace ChemCraft
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
-        }
-
-        private void ConsoleDraw()
-        {
-
-            Console.SetWindowSize(1, 1);
-            // Show health and energy
-            say = "Health: " + field.player[0].Health + "         Energy: " + field.player[0].Energy;
-            Console.WriteLine(say);
-
-            // Show hand
-            say = field.player[0].Hand[0].elementSymbol;
-            for (int i = 1; i < field.player[0].Hand.Count; i++)
-            {
-                say += ", " + field.player[0].Hand[i].elementSymbol;
-            }
-            Console.WriteLine(say);
-
-            // Show Compounds
-            say = field.player[0].Compounds[0].GetName;
-            for (int i = 1; i < field.player[0].Compounds.Count; i++)
-            {
-                say += ", " + field.player[0].Compounds[i].GetName;
-            }
-            Console.WriteLine(say);
-
-            // Show defenses
-            say = field.player[0].Defense[0].GetName;
-            for (int i = 1; i < field.player[0].Defense.Count; i++)
-            {
-                say += ", " + field.player[0].Defense[i].GetName;
-            }
-            Console.WriteLine(say);
-
-            // Middle stuff
-            Console.WriteLine("Player 1");
-            Console.WriteLine("");
-            Console.WriteLine("Player 2");
-
-            // Show defenses
-            say = field.player[1].Defense[0].GetName;
-            for (int i = 1; i < field.player[1].Defense.Count; i++)
-            {
-                say += ", " + field.player[1].Defense[i].GetName;
-            }
-            Console.WriteLine(say);
-
-            // Show Compounds
-            say = field.player[1].Compounds[0].GetName;
-            for (int i = 1; i < field.player[1].Compounds.Count; i++)
-            {
-                say += ", " + field.player[1].Compounds[i].GetName;
-            }
-            Console.WriteLine(say);
-
-            // Show hand
-            say = field.player[1].Hand[0].elementSymbol;
-            for (int i = 1; i < field.player[1].Hand.Count; i++)
-            {
-                say += ", " + field.player[1].Hand[i].elementSymbol;
-            }
-            Debug.WriteLine(say);
-
-            // Show health and energy
-            say = "Health: " + field.player[1].Health + "         Energy: " + field.player[1].Energy;
-            Console.WriteLine(say);
-
         }
     }
 }

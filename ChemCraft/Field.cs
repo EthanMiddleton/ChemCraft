@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-/*using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;*/
+using Microsoft.Xna.Framework.Input;
 
 namespace ChemCraft
 {
@@ -24,7 +24,7 @@ namespace ChemCraft
         int active, turnCount;
 
         // Variables for changing selected card
-        //MouseState mouse;
+        MouseState mouse;
         int selected;
         string selectedString;
         Boolean go;
@@ -36,7 +36,7 @@ namespace ChemCraft
         int victor;
 
         // Variables for drawing
-        //Vector2 drawPos;
+        Vector2 drawPos;
 
         // Variables for consoleDraw
         string say;
@@ -90,22 +90,6 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         public void turn()
         {
-            //if (turnPos != TurnPos.crafting)
-            //{
-            //    if (turnPos == TurnPos.other)
-            //    {
-            //        active = turnCount % 2;
-            //        player[active].income();
-            //    }
-            //    selectCard<Element>(player[active].Compounds, active);
-            //    if (turnPos == TurnPos.other)
-            //    {
-            //        turnPos = TurnPos.crafting;
-            //        player[active].useCrucible();
-            //        player[active].DrawCards();
-            //        turnCount++;
-            //    }
-            //}
             if (turnPosB == 1)
             {
                 active = turnCount % 2;
@@ -185,28 +169,6 @@ namespace ChemCraft
         {
             turnPos = TurnPos.attackActive;
             selectedString = " ";
-            //mouse = Mouse.GetState();
-            //if (mouse.MiddleButton == ButtonState.Pressed)
-            //{
-            //    turnPos = TurnPos.other;
-            //    return;
-            //}
-            //for (int i = 0; i < activeHand.Count; i++)
-            //{
-            //    if ((activeHand[i].X < (int)mouse.X && (int)mouse.X < activeHand[i].X + 20) && (activeHand[i].Y < (int)mouse.Y && (int)mouse.Y < activeHand[i].Y + 20))
-            //    {
-            //        if (mouse.LeftButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
-            //        {
-            //            attack(cPlayer);
-            //            turnPos = TurnPos.other;
-            //        }
-            //        if (mouse.RightButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
-            //        {
-            //            defend();
-            //            turnPos = TurnPos.other;
-            //        }
-            //    }
-            //}
             while (selectedString != "")
             {
                 selectedString = Console.ReadLine();
@@ -270,90 +232,6 @@ namespace ChemCraft
         public static void craftingDone()
         {
             turnPosB = 5;
-        }
-
-
-        private void ConsoleDraw()
-        {
-
-            Console.SetWindowSize(100, 12);
-            // Show health and energy
-            say = "Health: " + player[0].Health + "         Energy: " + player[0].Energy;
-            Console.WriteLine(say);
-
-            // Show hand
-            say = player[0].Hand[0].elementSymbol;
-            for (int i = 1; i < player[0].Hand.Count; i++)
-            {
-                say += ", " + player[0].Hand[i].elementSymbol;
-            }
-            Console.WriteLine(say);
-
-            // Show Compounds
-            say = "";
-            if (player[0].Compounds.Count > 0)
-            {
-                say = player[0].Compounds[0].GetName;
-                for (int i = 1; i < player[0].Compounds.Count; i++)
-                {
-                    say += ", " + player[0].Compounds[i].GetName;
-                }
-            }
-            Console.WriteLine(say);
-
-            // Show defenses
-            say = "";
-            if (player[0].Defense.Count > 0)
-            {
-                say = player[0].Defense[0].GetName;
-                for (int i = 1; i < player[0].Defense.Count; i++)
-                {
-                    say += ", " + player[0].Defense[i].GetName;
-                }
-            }
-            Console.WriteLine(say);
-
-            // Middle stuff
-            Console.WriteLine("Player 1");
-            Console.WriteLine("");
-            Console.WriteLine("Player 2");
-
-            // Show defenses
-            say = "";
-            if (player[1].Defense.Count > 0)
-            {
-                say = player[1].Defense[0].GetName;
-                for (int i = 1; i < player[1].Defense.Count; i++)
-                {
-                    say += ", " + player[1].Defense[i].GetName;
-                }
-            }
-            Console.WriteLine(say);
-
-            // Show Compounds
-            say = "";
-            if (player[1].Compounds.Count > 0)
-            {
-                say = player[1].Compounds[0].GetName;
-                for (int i = 1; i < player[1].Compounds.Count; i++)
-                {
-                    say += ", " + player[1].Compounds[i].GetName;
-                }
-            }
-            Console.WriteLine(say);
-
-            // Show hand
-            say = "";
-            say = player[1].Hand[0].elementSymbol;
-            for (int i = 1; i < player[1].Hand.Count; i++)
-            {
-                say += ", " + player[1].Hand[i].elementSymbol;
-            }
-            Console.WriteLine(say);
-
-            // Show health and energy
-            say = "Health: " + player[1].Health + "         Energy: " + player[1].Energy;
-            Console.WriteLine(say);
         }
     }
 }
