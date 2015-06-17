@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ChemCraft
 {
@@ -14,64 +15,86 @@ namespace ChemCraft
         //compounds is the list of compounds the player owns
         private List<Compound> compounds;
         //the player's deck
-        private List<Element> deck;
-        //the crucible where elements will combine
-        private Crucible crucible;
+        private Deck deck;
         //how much energy the player has
         private int energy;
         private int health;
         //shield array list
         private List <Compound> shield;
+        //random card that is selected
+        static Random rnd = new Random();
+        // Random int
+        int rand;
 
         //player constructor
         public Player()
         {
-            deck = new List<Element>();
+            deck = new Deck();
             hand = new List<Element>();
             compounds = new List<Compound>();
             shield = new List<Compound>();
             energy = 0;
             health = 10;
+            DrawCards(0);
         }
         //draw cards until the plaer hand has 6 cards
-        public void DrawCards()
+        public void DrawCards(int turnCount)
         {
             while (hand.Count < 6)
-                hand.Add(Draw());
+               hand.Add(Draw(turnCount));
+            //for (int i = 0; i < hand.Count; i++)
+            //{
+            //    hand.RemoveAt(0);
+            //}
+            //hand.Add(new Hydrogen());
+            //hand.Add(new Hydrogen());
+           // hand.Add(new Hydrogen());
+            //hand.Add(new Hydrogen());
+          //  hand.Add(new Oxygen());
+         //   hand.Add(new Hydrogen());
         }
+
         //draws a single card from the deck that hasn't previously been drawn
-        private Element Draw()
+        private Element Draw(int turnCount)
         {
             //boolean that ensures you find a card that hasn't been found
             Boolean check = false;
-            //random card that is selected
-            Random rnd = new Random();
+            
             //loops until card is found that hasn't bee picked
             while (check == false)
             {
-                int rand = rnd.Next(52);
-                if (deck[rand].state == 0)
+                if (turnCount < 5)
                 {
-                    deck[rand].state = 1;
+                    rand = rnd.Next(60+4*turnCount);
+                }
+                else
+                {
+                        rand = rnd.Next(80);
+                }
+                if (Deck.List[rand].state == 1)
+                {
+                    Deck.List[rand].state = 2;
                     check = true;
-                    return deck[rand];
+                    return Deck.List[rand];
                 }
             }
             return null;
         }
 
         //method to determine amount of income
-        public void income(int active) // how energy is gained from the compounds made
+        public void income() // how energy is gained from the compounds made
         {
+            energy = 0;
             for (int i = 0; i < compounds.Count; i++)
             {
-               energy += compounds[i].elements.Length;
+               energy += compounds[i].elementnum;
             }
         }
 
+        // use crucible
         public void useCrucible()
         {
-            //cruicble.(Method)(hand, compounds);
+            Application.Run(new Crucible(this));
         }
 
         //removes a compound (needs to be improved so that you send the compound sent)
@@ -82,10 +105,10 @@ namespace ChemCraft
         }
         //Setters and Getters for hand, compounds (what compounds are in possession of the player, and crucible
         #region Setters/Getters
-        public List<Element> Deck
+        public Deck Deck
         {
-            get { return Deck; }
-            set { Deck = value; }
+            get { return deck; }
+            set { deck = value; }
         }
         public List<Element> Hand
         {
@@ -99,11 +122,11 @@ namespace ChemCraft
             set { compounds = value; }
         }
 
-        public Crucible Crucible
-        {
-            get { return crucible; }
-            set { crucible = value; }
-        }
+        //public Crucible Crucible
+        //{
+        //    get { return crucible; }
+        //    set { crucible = value; }
+        //}
 
         public int Health
         {

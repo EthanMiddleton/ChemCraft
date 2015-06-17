@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
+/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input;*/
 
 namespace ChemCraft
 {
@@ -19,12 +19,15 @@ namespace ChemCraft
 
         // Turn taking variables
         enum TurnPos { attackActive, other, crafting };
+        static int turnPosB;
         static TurnPos turnPos;
         int active, turnCount;
 
         // Variables for changing selected card
-        MouseState mouse;
+        //MouseState mouse;
         int selected;
+        string selectedString;
+        Boolean go;
 
         // Variables for attack/defend
         enum compType { Acid = 1, Base }
@@ -33,7 +36,7 @@ namespace ChemCraft
         int victor;
 
         // Variables for drawing
-        Vector2 drawPos;
+        //Vector2 drawPos;
 
         // Variables for consoleDraw
         string say;
@@ -45,8 +48,6 @@ namespace ChemCraft
             player = new Player[2] { new Player(), new Player() };
             turnCount = 0;
             turnPos = TurnPos.other;
-            player[0].DrawCards();
-            player[1].DrawCards();
         }
 
         /// <summary>
@@ -89,24 +90,49 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         public void turn()
         {
-            if (turnPos != TurnPos.crafting)
+            //if (turnPos != TurnPos.crafting)
+            //{
+            //    if (turnPos == TurnPos.other)
+            //    {
+            //        active = turnCount % 2;
+            //        player[active].income();
+            //    }
+            //    selectCard<Element>(player[active].Compounds, active);
+            //    if (turnPos == TurnPos.other)
+            //    {
+            //        turnPos = TurnPos.crafting;
+            //        player[active].useCrucible();
+            //        player[active].DrawCards();
+            //        turnCount++;
+            //    }
+            //}
+            if (turnPosB == 1)
             {
-                if (turnPos == TurnPos.other)
-                {
-                    active = turnCount % 2;
-                    player[active].income(active);
-                }
-                selectCard<Element>(player[active].Compounds, active);
-                if (turnPos == TurnPos.other)
-                {
-                    attack(active);
-                    turnPos = TurnPos.crafting;
-                    player[active].useCrucible();
-                    player[active].DrawCards();
-                    turnCount++;
-                }
+                active = turnCount % 2;
+                turnPosB++;
             }
-            //consoleDraw();
+            if (turnPosB == 2)
+            {
+                player[active].income();
+                turnPosB++;
+            }
+            if (turnPosB == 3)
+            {
+                turnPos = TurnPos.crafting;
+                turnPosB++;
+            }
+            if (turnPosB == 4)
+            {
+                turnPosB = 0;
+                player[active].useCrucible();
+            }
+            if (turnPosB == 5)
+            {
+                player[active].DrawCards(turnCount/2 - turnCount%2);
+                turnCount++;
+                turnPosB = 1;
+            }
+            ConsoleDraw();
         }
 
         /// <summary>
@@ -115,23 +141,26 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         private void attack(int active)
         {
-            player[active].Energy -= 2 * player[active].Compounds[selected].elementnum;
-            // Test if the opponent has a shield for the current attack
-            for (int i = 0; i < otherPlayer.Defense.Count; i++)
+            if (player[0].Compounds.Count > 0)
             {
-                if (otherPlayer.Compounds[i].type.Equals(Compound.Type.Acid) && player[active].Compounds[selected].type.Equals(Compound.Type.Base))
+                player[active].Energy -= 2 * player[active].Compounds[selected].elementnum;
+                // Test if the opponent has a shield for the current attack
+                for (int i = 0; i < player[otherPlayer].Defense.Count; i++)
                 {
-                    player[active].removeCompound(selected);
-                    return;
+                    if (player[otherPlayer].Compounds[i].type.Equals(Compound.Type.Acid) && player[active].Compounds[selected].type.Equals(Compound.Type.Base))
+                    {
+                        player[active].removeCompound(selected);
+                        return;
+                    }
+                    if (player[otherPlayer].Compounds[i].type.Equals(Compound.Type.Base) && player[active].Compounds[selected].type.Equals(Compound.Type.Acid))
+                    {
+                        player[active].removeCompound(selected);
+                        return;
+                    }
                 }
-                if (otherPlayer.Compounds[i].type.Equals(Compound.Type.Base) && player[active].Compounds[selected].type.Equals(Compound.Type.Acid))
-                {
-                    player[active].removeCompound(selected);
-                    return;
-                }
+                player[otherPlayer].Health -= player[active].Compounds[selected].damage;
+                player[active].removeCompound(selected);
             }
-            player[active].removeCompound(selected);
-            otherPlayer.Health -= player[active].Compounds[selected].damage;
         }
 
 
@@ -139,10 +168,11 @@ namespace ChemCraft
         /// Play a defense
         /// </summary>
         /// <param name="active">The active player</param>
-        private void defend()
+        private void defend(int selected)
         {
-            player[active].Compounds.Add(player[active].Compounds[selected]);
-            player[active].removeCompound(selected);
+
+            player[active].Defense.Add(player[active].Compounds[selected]);
+            player[active].Compounds.RemoveAt(selected);
         }
 
         /// <summary>
@@ -154,42 +184,72 @@ namespace ChemCraft
         private void selectCard<Element>(List<Compound> activeHand, int cPlayer)
         {
             turnPos = TurnPos.attackActive;
-            mouse = Mouse.GetState();
-            if (mouse.MiddleButton == ButtonState.Pressed)
+            selectedString = " ";
+            //mouse = Mouse.GetState();
+            //if (mouse.MiddleButton == ButtonState.Pressed)
+            //{
+            //    turnPos = TurnPos.other;
+            //    return;
+            //}
+            //for (int i = 0; i < activeHand.Count; i++)
+            //{
+            //    if ((activeHand[i].X < (int)mouse.X && (int)mouse.X < activeHand[i].X + 20) && (activeHand[i].Y < (int)mouse.Y && (int)mouse.Y < activeHand[i].Y + 20))
+            //    {
+            //        if (mouse.LeftButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
+            //        {
+            //            attack(cPlayer);
+            //            turnPos = TurnPos.other;
+            //        }
+            //        if (mouse.RightButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
+            //        {
+            //            defend();
+            //            turnPos = TurnPos.other;
+            //        }
+            //    }
+            //}
+            while (selectedString != "")
             {
-                turnPos = TurnPos.other;
-                return;
-            }
-            for (int i = 0; i < activeHand.Count; i++)
-            {
-                if ((activeHand[i].X < (int)mouse.X && (int)mouse.X < activeHand[i].X + 20) && (activeHand[i].Y < (int)mouse.Y && (int)mouse.Y < activeHand[i].Y + 20))
+                selectedString = Console.ReadLine();
+                for (int i = 0; i < player[cPlayer].Compounds.Count; i++)
                 {
-                    if (mouse.LeftButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
+                    try
                     {
-                        attack(cPlayer);
-                        turnPos = TurnPos.other;
+                        selected = Convert.ToInt16(selectedString);
+                        go = true;
                     }
-                    if (mouse.RightButton == ButtonState.Pressed && activeHand[i].elementnum * 2 < player[cPlayer].Energy)
+                    catch (Exception)
                     {
-                        defend();
-                        turnPos = TurnPos.other;
+                        go = false;
+                    }
+                    if (go)
+                    {
+                        if (selected == i + 1 && player[cPlayer].Compounds[i].elementnum * 2 <= player[cPlayer].Energy)
+                        {
+                            attack(cPlayer);
+                        }
+                        else if (selected == -(i + 1) && player[cPlayer].Compounds[i].elementnum * 2 <= player[cPlayer].Energy)
+                        {
+                            defend(-selected);
+                        }
                     }
                 }
+                ConsoleDraw();
             }
+            turnPos = TurnPos.other;
         }
 
         /// <summary>
         /// Easy access to the inactive player
         /// </summary>
-        Player otherPlayer
+        int otherPlayer
         {
             get
             {
                 if (active == 1)
                 {
-                    return player[0];
+                    return 0;
                 }
-                return player[1];
+                return 1;
             }
         }
 
@@ -199,24 +259,24 @@ namespace ChemCraft
         /// <param name="spriteBatch"> spriteBatch to be used </param>
         /// <param name="texture">Image source location</param>
         /// <param name="position">Location of image</param>
-        public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 position)
-        {
-            spriteBatch.Draw(texture, position, Color.White);
-        }
+        //public void Draw(SpriteBatch spriteBatch, Texture2D texture, Vector2 position)
+        //{
+        //    spriteBatch.Draw(texture, position, Color.White);
+        //}
 
         /// <summary>
         /// Called by Crucible to continue the turn
         /// </summary>
         public static void craftingDone()
         {
-            turnPos = TurnPos.crafting;
+            turnPosB = 5;
         }
 
 
-        private void consoleDraw()
+        private void ConsoleDraw()
         {
 
-            Console.SetWindowSize(100, 11);
+            Console.SetWindowSize(100, 12);
             // Show health and energy
             say = "Health: " + player[0].Health + "         Energy: " + player[0].Energy;
             Console.WriteLine(say);
@@ -230,18 +290,26 @@ namespace ChemCraft
             Console.WriteLine(say);
 
             // Show Compounds
-            say = player[0].Compounds[0].GetName;
-            for (int i = 1; i < player[0].Compounds.Count; i++)
+            say = "";
+            if (player[0].Compounds.Count > 0)
             {
-                say += ", " + player[0].Compounds[i].GetName;
+                say = player[0].Compounds[0].GetName;
+                for (int i = 1; i < player[0].Compounds.Count; i++)
+                {
+                    say += ", " + player[0].Compounds[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
             // Show defenses
-            say = player[0].Defense[0].GetName;
-            for (int i = 1; i < player[0].Defense.Count; i++)
+            say = "";
+            if (player[0].Defense.Count > 0)
             {
-                say += ", " + player[0].Defense[i].GetName;
+                say = player[0].Defense[0].GetName;
+                for (int i = 1; i < player[0].Defense.Count; i++)
+                {
+                    say += ", " + player[0].Defense[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
@@ -251,22 +319,31 @@ namespace ChemCraft
             Console.WriteLine("Player 2");
 
             // Show defenses
-            say = player[1].Defense[0].GetName;
-            for (int i = 1; i < player[1].Defense.Count; i++)
+            say = "";
+            if (player[1].Defense.Count > 0)
             {
-                say += ", " + player[1].Defense[i].GetName;
+                say = player[1].Defense[0].GetName;
+                for (int i = 1; i < player[1].Defense.Count; i++)
+                {
+                    say += ", " + player[1].Defense[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
             // Show Compounds
-            say = player[1].Compounds[0].GetName;
-            for (int i = 1; i < player[1].Compounds.Count; i++)
+            say = "";
+            if (player[1].Compounds.Count > 0)
             {
-                say += ", " + player[1].Compounds[i].GetName;
+                say = player[1].Compounds[0].GetName;
+                for (int i = 1; i < player[1].Compounds.Count; i++)
+                {
+                    say += ", " + player[1].Compounds[i].GetName;
+                }
             }
             Console.WriteLine(say);
 
             // Show hand
+            say = "";
             say = player[1].Hand[0].elementSymbol;
             for (int i = 1; i < player[1].Hand.Count; i++)
             {
@@ -277,7 +354,6 @@ namespace ChemCraft
             // Show health and energy
             say = "Health: " + player[1].Health + "         Energy: " + player[1].Energy;
             Console.WriteLine(say);
-
         }
     }
 }
