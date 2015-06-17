@@ -73,6 +73,7 @@ namespace ChemCraft
     public abstract class Metal : Element
     {
         public abstract void reactWithNonMetal();
+
     }
 
     public abstract class NonMetal : Element
@@ -245,7 +246,8 @@ namespace ChemCraft
         }
         public override bool isDiatomic() { return false; }
     }
-    
+
+
     public class Sodium : Metal
     {
         public Sodium()
@@ -255,11 +257,14 @@ namespace ChemCraft
             atomicNumber = 11;
             valenceElectrons = 1;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.CATION;
         }
-
-        public override bool isDiatomic() { return true; }
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+        public bool isDiatomic() { return true; }
     }
 
     public class Magnesium : Metal
@@ -271,11 +276,14 @@ namespace ChemCraft
             atomicNumber = 12;
             valenceElectrons = 2;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.CATION;
         }
-
-        public override bool isDiatomic() { return false; }
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+        public bool isDiatomic() { return false; }
     }
 
     public class Aluminum : Metal
@@ -287,7 +295,7 @@ namespace ChemCraft
             atomicNumber = 13;
             valenceElectrons = 3;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.CATION;
         }
 
@@ -306,11 +314,11 @@ namespace ChemCraft
             atomicNumber = 14;
             valenceElectrons = 4;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.NOT;
         }
 
-        public override void reactWithNonMetal()
+        public void reactWithNonMetal()
         {
             throw new NotImplementedException();
         }
@@ -325,8 +333,12 @@ namespace ChemCraft
             atomicNumber = 15;
             valenceElectrons = 5;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.ANION;
+        }
+        public override bool isDiatomic()
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -339,7 +351,7 @@ namespace ChemCraft
             atomicNumber = 16;
             valenceElectrons = 6;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.ANION;
         }
         public override bool isDiatomic() { return false; }
@@ -354,7 +366,7 @@ namespace ChemCraft
             atomicNumber = 17;
             valenceElectrons = 7;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.ANION;
         }
 
@@ -370,7 +382,7 @@ namespace ChemCraft
             atomicNumber = 18;
             valenceElectrons = 8;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.NOT;
         }
 
@@ -386,11 +398,14 @@ namespace ChemCraft
             atomicNumber = 19;
             valenceElectrons = 1;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.CATION;
         }
-
-        public override bool isDiatomic() { return true; }
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+        public bool isDiatomic() { return true; }
     }
 
     public class Calcium : Metal
@@ -402,9 +417,15 @@ namespace ChemCraft
             atomicNumber = 20;
             valenceElectrons = 2;
             valenceShell = 8;
-            State = 1;
+            state = 1;
             ion = ionType.CATION;
         }
-        public override bool isDiatomic() { return false; }
+
+        public override void reactWithNonMetal()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool isDiatomic() { return false; }
     }
 }
