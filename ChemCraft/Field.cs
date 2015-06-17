@@ -116,7 +116,6 @@ namespace ChemCraft
                 turnCount++;
                 turnPosB = 1;
             }
-            ConsoleDraw();
         }
 
         /// <summary>
@@ -195,7 +194,6 @@ namespace ChemCraft
                         }
                     }
                 }
-                ConsoleDraw();
             }
             turnPos = TurnPos.other;
         }

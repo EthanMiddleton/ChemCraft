@@ -18,7 +18,6 @@ namespace ChemCraft
 
         // Field Class where all actions are performed
         Field field;
-        string say;
 
         public Game1()
         {
