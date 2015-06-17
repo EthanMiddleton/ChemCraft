@@ -9,7 +9,7 @@ namespace ChemCraft
     public class H2O2 : Compound
     {
 
-        public H2O2(int[] myIDs)
+        public H2O2()
         {
             elementnum = 4;
             state = 0;
@@ -18,7 +18,6 @@ namespace ChemCraft
             formula = "H₂O₂";
             type = Type.Acid;
             elements = new int[4] { 1, 1, 8, 8 };
-            IDS = myIDs;
         }
 
         /// <summary>

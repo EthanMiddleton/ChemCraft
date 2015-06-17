@@ -9,7 +9,7 @@ namespace ChemCraft
     public class HCl : Compound
     {
 
-        public HCl(int[] myIDs)
+        public HCl()
         {
             elementnum = 2;
             state = 0;
@@ -18,7 +18,6 @@ namespace ChemCraft
             formula = "HCl";
             type = Type.Acid;
             elements = new int[2] { 1, 17 };
-            IDS = myIDs;
         }
 
         /// <summary>

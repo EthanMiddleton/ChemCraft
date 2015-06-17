@@ -9,7 +9,7 @@ namespace ChemCraft
     public class N2O : Compound
     {
 
-        public N2O(int[] myIDs) 
+        public N2O() 
         {
             name = "Laughing Gas";
             state = 0;
@@ -18,7 +18,6 @@ namespace ChemCraft
             formula = "N₂O";
             type = Type.Undetermined;
             elements = new int[3] {7,7,8};
-            IDS = myIDs;
         }
 
         /// <summary>

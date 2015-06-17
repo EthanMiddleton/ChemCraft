@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,27 +6,27 @@ using System.Text;
 
 namespace ChemCraft
 {
-    public class SiO2 : Compound
+    public class F2 : Compound
     {
 
-        public SiO2()
+        public F2()
         {
-            elementnum = 3;
+            elementnum = 2;
             state = 0;
-            damage = 4;
-            name = "Quartz";
-            formula = "SiO₂";
+            damage = 1;
+            name = "Fluorine Gas";
+            formula = "F₂";
             type = Type.Undetermined;
-            elements = new int[3] { 14, 8, 8 };
+            elements = new int[2] { 9, 9 };
         }
 
         /// <summary>
         ///the compounds ability
-        /// </summary>
+        /// </summary> 
         override public void ability()
         {
 
         }
-        
+
     }
 }

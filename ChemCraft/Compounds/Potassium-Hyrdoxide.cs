@@ -9,7 +9,7 @@ namespace ChemCraft
     public class KOH : Compound
     {
 
-        public KOH(int[] myIDs)
+        public KOH()
         {
             elementnum = 3;
             state = 0;
@@ -18,7 +18,6 @@ namespace ChemCraft
             formula = "KOH";
             type = Type.Base;
             elements = new int[3] { 19, 8, 1 };
-            IDS = myIDs;
         }
 
         /// <summary>

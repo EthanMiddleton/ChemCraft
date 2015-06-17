@@ -9,7 +9,7 @@ namespace ChemCraft
     public class NaClO : Compound
     {
        
-        public NaClO(int[] myIDs) 
+        public NaClO() 
         {
             name = "Bleach";
             state = 0;
@@ -18,7 +18,6 @@ namespace ChemCraft
             formula = "NaClO";
             type = Type.Base;
             elements = new int[3] {11,17,8};
-            IDS = myIDs;
         }
 
 

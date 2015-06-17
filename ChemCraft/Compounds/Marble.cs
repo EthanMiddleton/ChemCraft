@@ -9,7 +9,7 @@ namespace ChemCraft
     public class CaCO3 : Compound
     {
          
-        public CaCO3(int[] myIDs) 
+        public CaCO3() 
         {
             name = "Marble";
             state = 0; 
@@ -18,7 +18,6 @@ namespace ChemCraft
             formula = "CaCO₃";
             type = Type.Undetermined;
             elements = new int[5] {20,6,8,8,8};
-            IDS = myIDs;
         }
         
         /// <summary>

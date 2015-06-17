@@ -9,7 +9,7 @@ namespace ChemCraft
     public class NaCl : Compound
     {
 
-        public NaCl(int[] myIDs)
+        public NaCl()
         {
             elementnum = 2;
             state = 0;
@@ -18,7 +18,6 @@ namespace ChemCraft
             formula = "NaCl";
             type = Type.Undetermined;
             elements = new int[2] { 11, 17 };
-            IDS = myIDs;
         }
 
         /// <summary>
