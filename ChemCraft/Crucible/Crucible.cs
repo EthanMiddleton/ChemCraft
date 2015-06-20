@@ -114,24 +114,24 @@ namespace ChemCraft
                 newCompounds.Add(createCompound(new CH4()));
             if (elements[20 - 1].Count >= 1 && elements[8 - 1].Count >= 1)
                 newCompounds.Add(createCompound(new CaO()));
-            if (elements[20 - 1].Count >= 1 && elements[8 - 1].Count >= 2)
+            if (elements[6 - 1].Count >= 1 && elements[8 - 1].Count >= 2)
                 newCompounds.Add(createCompound(new CO2()));
             if (elements[8 - 1].Count >= 3)
                 newCompounds.Add(createCompound(new O3()));
             if (elements[20 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
                 newCompounds.Add(createCompound(new CaOH()));
-            if (elements[3 - 1].Count >= 2 && elements[8 - 1].Count >= 1)
-                newCompounds.Add(createCompound(new Li2O()));
-            if (elements[3 - 1].Count >= 1 && elements[17 - 1].Count >= 1)
-                newCompounds.Add(createCompound(new LiCl()));
-            if (elements[3 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
-                newCompounds.Add(createCompound(new LiOH()));
-            if (elements[3 - 1].Count >= 2 && elements[16 - 1].Count >= 1)
-                newCompounds.Add(createCompound(new Li2S()));
-            if (elements[3 - 1].Count >= 1 && elements[7 - 1].Count >= 3)
-                newCompounds.Add(createCompound(new LiN3()));
-            if (elements[3 - 1].Count >= 1 && elements[7 - 1].Count >= 1 && elements[8 - 1].Count >= 3)
-                newCompounds.Add(createCompound(new LiNO3()));
+            //if (elements[3 - 1].Count >= 2 && elements[8 - 1].Count >= 1)
+            //    newCompounds.Add(createCompound(new Li2O()));
+            //if (elements[3 - 1].Count >= 1 && elements[17 - 1].Count >= 1)
+            //    newCompounds.Add(createCompound(new LiCl()));
+            //if (elements[3 - 1].Count >= 1 && elements[8 - 1].Count >= 1 && elements[1 - 1].Count >= 1)
+            //    newCompounds.Add(createCompound(new LiOH()));
+            //if (elements[3 - 1].Count >= 2 && elements[16 - 1].Count >= 1)
+            //    newCompounds.Add(createCompound(new Li2S()));
+            //if (elements[3 - 1].Count >= 1 && elements[7 - 1].Count >= 3)
+            //    newCompounds.Add(createCompound(new LiN3()));
+            //if (elements[3 - 1].Count >= 1 && elements[7 - 1].Count >= 1 && elements[8 - 1].Count >= 3)
+            //    newCompounds.Add(createCompound(new LiNO3()));
 
 
 
@@ -146,9 +146,12 @@ namespace ChemCraft
         {
             int[] myIDs = new int[newCompound.elements.Length];
 
+            int elementNum;
+
             for (int i = 0; i < myIDs.Length; i++)
             {
-                myIDs[i] = elements[newCompound.elements[i] - 1][0].ID;
+                elementNum = newCompound.elements[i];
+                myIDs[i] = elements[elementNum - 1][0].ID;
                 elements[newCompound.elements[i] - 1].RemoveAt(0);
             }
             newCompound.IDs = myIDs;
