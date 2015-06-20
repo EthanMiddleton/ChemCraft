@@ -52,11 +52,13 @@
     <Compile Include="Compounds\Calcium Hydroxide.cs" />
     <Compile Include="Compounds\Carbon Dioxide.cs" />
     <Compile Include="Compounds\Caustic-Soda.cs" />
+    <Compile Include="Compounds\Chlorine Gas.cs" />
     <Compile Include="Compounds\Compound.cs" />
     <Compile Include="Compounds\Fluorine Gas.cs" />
     <Compile Include="Compounds\Hydrogen Gas.cs" />
     <Compile Include="Compounds\Hydrogen-Peroxide.cs" />
     <Compile Include="Compounds\Laughing-Gas.cs" />
+    <Compile Include="Compounds\Lime.cs" />
     <Compile Include="Compounds\Marble.cs" />
     <Compile Include="Compounds\Methane.cs" />
     <Compile Include="Compounds\Muriatic-Acid.cs" />
