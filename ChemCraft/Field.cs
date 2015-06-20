@@ -90,32 +90,39 @@ namespace ChemCraft
         /// <param name="active">The active player</param>
         public void turn()
         {
-            if (turnPosB == 1)
+            if (turnPosB == 1 && isWon() == 0)
             {
+                turnCount = turnCount + 1;
                 active = turnCount % 2;
                 turnPosB++;
             }
-            if (turnPosB == 2)
+            if (turnPosB == 2 && isWon() == 0)
             {
                 player[active].income();
                 turnPosB++;
+                ConsoleDraw();
             }
-            if (turnPosB == 3)
+            if (turnPosB == 3 && isWon() == 0)
+            {
+                selectCard<Element>(player[active].Compounds, active);
+                turnPosB++;
+            }
+            if (turnPosB == 4 && isWon() == 0)
             {
                 turnPos = TurnPos.crafting;
                 turnPosB++;
             }
-            if (turnPosB == 4)
+            if (turnPosB == 5 && isWon() == 0)
             {
-                turnPosB = 0;
+                //turnPosB = 0;
                 player[active].useCrucible();
             }
-            if (turnPosB == 5)
+            if (turnPosB == 6 && isWon() == 0)
             {
-                player[active].DrawCards(turnCount/2 - turnCount%2);
-                turnCount++;
+                player[active].DrawCards(turnCount / 2 - turnCount % 2);
                 turnPosB = 1;
             }
+            ConsoleDraw();
         }
 
         /// <summary>
